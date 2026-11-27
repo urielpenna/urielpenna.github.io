@@ -129,8 +129,9 @@ figcaption.vo .m b{font-size:1.35rem;font-weight:700;color:var(--accent-hi);lett
 .clients{background:var(--beige);color:var(--beige-ink);padding:4.5rem 0;margin-top:4rem}
 .clients .label{font-family:var(--mono);font-weight:500;font-size:1.3rem;letter-spacing:.16em;text-transform:uppercase;color:#6E1B29;margin-bottom:1.8rem}
 .clients .sub{font-family:var(--sans);font-weight:500;font-size:1.3rem;color:rgba(22,17,18,.92);margin:-.6rem 0 2.6rem;max-width:56ch;text-wrap:pretty}
-.client-grid{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:2.6rem 3.4rem;max-width:1240px;margin-inline:auto}
-@media(max-width:720px){.client-grid{gap:2.2rem 2rem}}
+.client-grid{display:flex;flex-direction:column;align-items:center;gap:2.6rem;max-width:1240px;margin-inline:auto}
+.crow{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:2.6rem 3.4rem}
+@media(max-width:720px){.client-grid{flex-direction:row;flex-wrap:wrap;justify-content:center;gap:2.2rem 2rem}.crow{display:contents}}
 .client-grid img{width:auto;opacity:.9;transition:opacity .25s}
 .client-grid img:hover{opacity:1}
 .client-grid .wm{font-family:var(--serif);font-style:italic;font-weight:500;font-size:1.4rem;color:var(--beige-ink);opacity:.9;white-space:nowrap}
@@ -472,23 +473,31 @@ footer img{height:20px;width:auto;opacity:.8}
       <p class="label" data-i18n="clients.label">Quem já passou pela mesa</p>
       <p class="sub" data-i18n="clients.sub">Canais, marcas, escolas e produtoras que já editaram, animaram e filmaram comigo.</p>
       <div class="client-grid">
-        <img src="client-enp.png" alt="Ecommerce na Prática" style="height:46px">
-        <img src="client-bradesco.png" alt="Bradesco Seguros" style="height:36px">
-        <img src="3-client-fgvemap.png" alt="FGV EMAp" style="height:40px">
-        <img src="client-caldeiras.png" alt="Casa das Caldeiras" style="height:62px">
-        <img src="client-vudoo.png" alt="Vudoo Filmes" style="height:42px">
-        <img src="18-client-batista.png" alt="Colégio Batista Brasil" style="height:54px">
-        <img src="client-acsp.png" alt="Associação Comercial de São Paulo" style="height:58px">
-        <img src="1-client-costazul.png" alt="Costazul Supermercados" style="height:44px">
-        <img src="2-client-sushirao.png" alt="Sushi Rão" style="height:48px">
-        <img src="2-client-paralax.png" alt="Estúdio Paralax" style="height:30px">
-        <img src="1-client-banana.png" alt="Banana Filmes" style="height:64px">
-        <img src="5-client-gsk.png" alt="GSK" style="height:38px">
-        <img src="6-client-multishow.png" alt="Multishow" style="height:46px">
-        <img src="7-client-gnt.png" alt="GNT" style="height:40px">
-        <img src="8-client-globosat.png" alt="GloboSat" style="height:32px">
-        <img src="9-client-santander.png" alt="Santander" style="height:34px">
-        <img src="10-client-cimed.png" alt="CIMED" style="height:38px">
+        <div class="crow">
+          <img src="client-bradesco.png" alt="Bradesco Seguros" style="height:36px">
+          <img src="9-client-santander.png" alt="Santander" style="height:34px">
+          <img src="6-client-multishow.png" alt="Multishow" style="height:46px">
+          <img src="7-client-gnt.png" alt="GNT" style="height:40px">
+          <img src="8-client-globosat.png" alt="GloboSat" style="height:32px">
+        </div>
+        <div class="crow">
+          <img src="client-enp.png" alt="Ecommerce na Prática" style="height:46px">
+          <img src="5-client-gsk.png" alt="GSK" style="height:38px">
+          <img src="3-client-fgvemap.png" alt="FGV EMAp" style="height:40px">
+          <img src="10-client-cimed.png" alt="CIMED" style="height:38px">
+        </div>
+        <div class="crow">
+          <img src="client-vudoo.png" alt="Vudoo Filmes" style="height:42px">
+          <img src="client-caldeiras.png" alt="Casa das Caldeiras" style="height:62px">
+          <img src="client-acsp.png" alt="Associação Comercial de São Paulo" style="height:58px">
+          <img src="18-client-batista.png" alt="Colégio Batista Brasil" style="height:54px">
+        </div>
+        <div class="crow">
+          <img src="1-client-banana.png" alt="Banana Filmes" style="height:64px">
+          <img src="2-client-paralax.png" alt="Estúdio Paralax" style="height:30px">
+          <img src="1-client-costazul.png" alt="Costazul Supermercados" style="height:44px">
+          <img src="2-client-sushirao.png" alt="Sushi Rão" style="height:48px">
+        </div>
       </div>
     </div>
   </section>
