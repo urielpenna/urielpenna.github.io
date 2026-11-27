@@ -569,7 +569,7 @@ html[lang="es"] footer .wrap::before{content:"▸ FIN DEL ROLLO   ▸   5219   �
   </section>
   <section class="about" id="sobre">
     <div class="wrap about-grid">
-      <figure class="about-photo"><img id="aboutPhoto" src="1-about-alt1.jpg" width="640" height="800" loading="lazy" alt="Retrato de Uriel Penna sorrindo, com cachos e bigode, contra uma parede de tijolos"></figure>
+      <figure class="about-photo"><img id="aboutPhoto" src="1-about-alt4.jpg" width="640" height="800" loading="lazy" alt="Retrato de Uriel Penna sorrindo, com cachos e bigode, de óculos escuros, com o mar ao fundo"></figure>
       <div class="reveal">
         <h2 data-i18n="about.h2">Editor de vídeo, motion designer e artesão de experiências audiovisuais.</h2>
         <p data-i18n-html="about.p1">Moro em Paraty, entre a mata e o mar, e trabalho com clientes do Brasil inteiro. Venho do circo e das artes cênicas: foi lá que aprendi ritmo, tempo e presença — e é disso que um corte é feito. Até hoje é assim que eu perco a noção do tempo: ensinando, tocando música, dançando. É o mesmo estado que procuro em toda montagem.</p>
@@ -702,7 +702,7 @@ function setLang(l){
     const k = el.getAttribute('data-i18n-html');
     if (dict[k] !== undefined) el.innerHTML = dict[k];
   });
-  (function(){var p=document.getElementById('aboutPhoto');if(p)p.alt=({pt:'Retrato de Uriel Penna sorrindo, com cachos e bigode, contra uma parede de tijolos',en:'Portrait of Uriel Penna smiling, curly hair and moustache, against a brick wall',es:'Retrato de Uriel Penna sonriendo, con rizos y bigote, ante una pared de ladrillos'})[l]||p.alt})();
+  (function(){var p=document.getElementById('aboutPhoto');if(p)p.alt=({pt:'Retrato de Uriel Penna sorrindo, com cachos e bigode, de óculos escuros, com o mar ao fundo',en:'Portrait of Uriel Penna smiling, curly hair and moustache, wearing sunglasses, with the sea behind',es:'Retrato de Uriel Penna sonriendo, con rizos y bigote, con gafas de sol, con el mar de fondo'})[l]||p.alt})();
   document.querySelectorAll('.langs button').forEach(b => b.setAttribute('aria-pressed', b.dataset.lang === l ? 'true' : 'false'));
   try { localStorage.setItem('up-lang', l); } catch(e) {}
 }
