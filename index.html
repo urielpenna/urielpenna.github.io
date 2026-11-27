@@ -83,7 +83,7 @@ header{position:fixed;inset:0 0 auto 0;z-index:50;background:rgba(11,9,9,.86);ba
 .stat{padding:2.4rem 1.6rem}
 .stat:first-child{border-left:none;padding-left:0}
 .stat b{display:block;font-family:var(--serif);font-weight:400;font-size:clamp(1.9rem,3.4vw,2.9rem);line-height:1;color:var(--accent)}
-.stat span{display:block;margin-top:.7rem;font-family:var(--mono);font-weight:500;font-size:.88rem;letter-spacing:.09em;text-transform:uppercase;color:rgba(22,20,18,.88)}
+.stat span{display:block;margin-top:.7rem;font-family:var(--mono);font-weight:500;font-size:.95rem;letter-spacing:.09em;text-transform:uppercase;color:rgba(22,20,18,.92)}
 .stat .s{display:none}
 @media(max-width:720px){.stats .wrap{grid-template-columns:1fr;gap:.4rem 0}.stat{padding:1.4rem 0}.stat:nth-child(odd){border-left:none;padding-left:0}.stat .f{display:none}.stat .s{display:block}}
 section.work{padding:6.5rem 0 3rem;min-height:100vh;min-height:100svh;display:flex;flex-direction:column;justify-content:center}
@@ -119,8 +119,8 @@ figcaption.vo{justify-content:flex-end}
 figcaption.vo .m{font-size:.8rem}
 figcaption.vo .m b{font-size:1.35rem;font-weight:700;color:var(--accent-hi);letter-spacing:.03em;margin-right:.4rem}
 .clients{background:var(--beige);color:var(--beige-ink);padding:4.5rem 0;margin-top:4rem}
-.clients .label{font-family:var(--mono);font-weight:500;font-size:.95rem;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin-bottom:1.8rem}
-.clients .sub{font-family:var(--sans);font-weight:400;font-size:1.08rem;color:rgba(22,17,18,.75);margin:-.9rem 0 2.6rem;max-width:56ch;text-wrap:pretty}
+.clients .label{font-family:var(--mono);font-weight:500;font-size:1.3rem;letter-spacing:.16em;text-transform:uppercase;color:#6E1B29;margin-bottom:1.8rem}
+.clients .sub{font-family:var(--sans);font-weight:500;font-size:1.3rem;color:rgba(22,17,18,.92);margin:-.6rem 0 2.6rem;max-width:56ch;text-wrap:pretty}
 .client-grid{display:grid;grid-template-columns:repeat(4,1fr);align-items:center;justify-items:center;gap:2.4rem 2rem}
 @media(max-width:720px){.client-grid{grid-template-columns:repeat(2,1fr);gap:2.2rem 1.2rem}}
 .client-grid img{width:auto;opacity:.9;transition:opacity .25s}
@@ -706,10 +706,10 @@ var amp = reduced ? 0.4 : 1;
   document.addEventListener('pointerdown', unlock);
 })();
 
-// Smooth anchor scrolling with ease-in-out curve
+// Smooth anchor scrolling with ease-out curve (fast start, soft landing)
 (function(){
   var reducedQ = matchMedia('(prefers-reduced-motion: reduce)');
-  function easeInOut(t){ return t < .5 ? 4*t*t*t : 1 - Math.pow(-2*t + 2, 3) / 2; }
+  function easeOut(t){ return 1 - Math.pow(1 - t, 3); }
   var anim = null;
   document.querySelectorAll('a[href^="#"]').forEach(function(a){
     a.addEventListener('click', function(ev){
@@ -722,12 +722,12 @@ var amp = reduced ? 0.4 : 1;
       var target = Math.max(0, el.getBoundingClientRect().top + window.scrollY - 72);
       if (reducedQ.matches){ window.scrollTo(0, target); return; }
       if (anim) cancelAnimationFrame(anim);
-      var start = window.scrollY, dist = target - start, dur = Math.min(1100, Math.max(450, Math.abs(dist) * 0.55));
+      var start = window.scrollY, dist = target - start, dur = Math.min(850, Math.max(320, Math.abs(dist) * 0.40));
       var t0 = null;
       function step(ts){
         if (!t0) t0 = ts;
         var k = Math.min(1, (ts - t0) / dur);
-        window.scrollTo(0, start + dist * easeInOut(k));
+        window.scrollTo(0, start + dist * easeOut(k));
         if (k < 1) anim = requestAnimationFrame(step); else anim = null;
       }
       anim = requestAnimationFrame(step);
