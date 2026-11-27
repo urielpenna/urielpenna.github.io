@@ -838,5 +838,6 @@ function u(){t=false;var h=Math.max(1,d.scrollHeight-innerHeight),x=Math.min(1,M
 d.style.setProperty('--hp',(r.matches?1:Math.min(1,Math.max(0,scrollY/240))).toFixed(3));d.style.setProperty('--la',((.16+.165*S(x,2,0))*k).toFixed(3));
 d.style.setProperty('--lc',((.14+.40*S(x,2.5,.35))*k).toFixed(3));
 if(A&&P&&!r.matches){var b=A.getBoundingClientRect(),p=(b.top+b.height/2-innerHeight/2)/(innerHeight/2+b.height/2);p=Math.max(-1,Math.min(1,p));d.style.setProperty('--py',(p*-5.5).toFixed(2)+'%')}}
-addEventListener('scroll',function(){if(!t){t=true;requestAnimationFrame(u)}},{passive:true});addEventListener('resize',u);addEventListener('load',u);u()})()</script></body>
+addEventListener('scroll',function(){if(!t){t=true;requestAnimationFrame(u)}},{passive:true});addEventListener('resize',u);addEventListener('load',u);u()})()</script><script>(function(){var h=document.querySelector('section.lka .sec-title'),v=document.querySelector('section.lka .videos'),n=document.querySelector('section.lka .sec-num');if(!h||!v)return;function a(){if(innerWidth<=820){v.style.marginLeft='';return}v.style.marginLeft='0px';var d=h.getBoundingClientRect().left-v.getBoundingClientRect().left;v.style.marginLeft=Math.max(0,d)+'px'}a();addEventListener('resize',a);addEventListener('load',a);if(window.ResizeObserver&&n)new ResizeObserver(a).observe(n);new MutationObserver(a).observe(document.documentElement,{attributes:true,attributeFilter:['lang']})})()</script>
+</body>
 </html>
