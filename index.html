@@ -87,6 +87,9 @@ video.hero-bg{transform:scale(1.4);transform-origin:50% 50%}
 .btn svg{width:20px;height:20px;fill:currentColor}
 .btn.ghost{background:transparent;border-color:var(--line);color:var(--ink);font-family:var(--mono);font-weight:500;font-size:.8rem;letter-spacing:.1em;text-transform:uppercase;padding:1rem 1.7rem}
 .btn.ghost:hover{border-color:var(--accent-hi);background:transparent;color:var(--accent-hi)}
+.btn:not(.ghost){transition:background .25s,border-color .25s,color .25s,transform .25s,box-shadow .35s}
+.btn:not(.ghost):hover,.btn:not(.ghost):focus-visible{border-color:rgba(232,120,60,.95);box-shadow:0 0 0 1px rgba(232,120,60,.8),0 0 16px 2px rgba(232,120,60,.5),0 0 48px 8px rgba(142,36,52,.5)}
+.btn:not(.ghost):active{transform:translateY(0) scale(.98);box-shadow:0 0 0 1px rgba(232,120,60,.9),0 0 22px 4px rgba(232,120,60,.6),0 0 56px 10px rgba(142,36,52,.55)}
 
 
 .stats{background:var(--beige);color:var(--beige-ink)}
@@ -103,11 +106,10 @@ section.work,section.about{position:relative;overflow:hidden}
 /* fundo único: vazamentos de luz e grão ficam fixos na viewport, todas as seções passam por cima do mesmo material */
 body::before,body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:-1}
 body::before{mix-blend-mode:screen;opacity:var(--la,.4);background:url("1-leak-a.webp") left top/80% 70% no-repeat;-webkit-mask-image:radial-gradient(ellipse 74% 62% at 0% 0%,#000 0,#000 18%,transparent 100%);mask-image:radial-gradient(ellipse 74% 62% at 0% 0%,#000 0,#000 18%,transparent 100%)}
-html::before,html::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:-1;mix-blend-mode:screen;background-repeat:no-repeat}
-html::before{opacity:var(--lc,.4);background-image:url("1-leak-c.webp");background-position:right center;background-size:100% 100%}
-html::after{opacity:var(--ld,.4);background-image:url("2-leak-d.webp");background-position:right center;background-size:100% 100%}
+html::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:-1;mix-blend-mode:screen;background-repeat:no-repeat}
+html::before{opacity:var(--lc,.4);background-image:url("1-leak-c2.webp");background-position:right center;background-size:auto 100%}
 body::after{opacity:.07;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
-@media(max-width:720px){body::before{background-size:130% 50%}html::before,html::after{background-size:cover;background-position:right center}}
+@media(max-width:720px){body::before{background-size:130% 50%}html::before{background-size:auto 100%;background-position:right center}}
 section.work>.wrap,section.about>.wrap{position:relative;z-index:1}
 .sec-head{display:grid;grid-template-columns:auto 1fr;gap:1.5rem 3rem;align-items:end;margin-bottom:3rem}
 .sec-num{font-family:var(--mono);font-size:.85rem;color:var(--accent-hi);letter-spacing:.2em;padding-bottom:.6rem}
@@ -126,7 +128,7 @@ figure.video{position:relative}
 .frame video.loop{width:100%;height:100%;object-fit:cover;display:block;position:absolute;inset:0;z-index:1;transition:transform 1.25s cubic-bezier(.22,.61,.21,1)}
 /* mesa de luz: grão de película dentro dos quadros + varredura de leak no hover */
 .frame::before{content:"";position:absolute;inset:0;z-index:2;pointer-events:none;mix-blend-mode:overlay;opacity:.2;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
-.frame::after{content:"";position:absolute;top:0;bottom:0;left:-60%;width:60%;z-index:2;pointer-events:none;mix-blend-mode:screen;opacity:0;background:linear-gradient(100deg,transparent 0,rgba(214,92,26,.0) 12%,rgba(255,160,70,.5) 42%,rgba(142,36,52,.45) 66%,transparent 100%);transform:skewX(-14deg);transition:opacity .2s}
+.frame::after{content:"";position:absolute;top:0;bottom:0;left:-60%;width:60%;z-index:2;pointer-events:none;mix-blend-mode:screen;opacity:0;background:linear-gradient(100deg,transparent 0,rgba(214,92,26,.0) 12%,rgba(255,160,70,.85) 42%,rgba(142,36,52,.75) 66%,transparent 100%);transform:skewX(-14deg);transition:opacity .2s}
 .frame:hover::after{opacity:1;animation:leakSweep 1.1s cubic-bezier(.3,.6,.25,1) forwards}
 @keyframes leakSweep{from{left:-60%}to{left:115%}}
 .hero::before{content:"";position:absolute;left:0;top:-64px;width:100%;height:calc(100% + 64px);z-index:1;pointer-events:none;mix-blend-mode:overlay;opacity:.22;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
@@ -172,6 +174,7 @@ section.about{padding:7rem 0}
 .soc{margin-top:3.5rem;display:flex;flex-wrap:wrap;gap:2rem;font-family:var(--mono);font-size:.8rem;letter-spacing:.12em;text-transform:uppercase}
 .soc a{color:var(--muted);border-bottom:1px solid var(--line);padding-bottom:.25rem;transition:color .2s,border-color .2s}
 .soc a:hover{color:var(--accent-hi);border-color:var(--accent-hi)}
+@media(max-width:720px){.soc{gap:1rem;font-size:.66rem;letter-spacing:.06em;flex-wrap:nowrap;justify-content:space-between}.contact .sign{font-size:1.4rem;line-height:1.25;text-wrap:balance}.contact .sign b{display:block}.contact .sign .dot{display:none}}
 footer{padding:2rem 0}
 footer .wrap{display:flex;flex-wrap:wrap;gap:1rem;justify-content:space-between;align-items:center;font-family:var(--mono);font-size:.75rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
 footer img{height:20px;width:auto;opacity:.8}
@@ -226,7 +229,7 @@ section .wrap,footer .wrap{width:min(1240px,100% - 6rem)}
 /* margem fixa */
 .hero .hero-name{display:block;position:fixed;z-index:40;right:1.15rem;top:84px;bottom:1.2rem;margin:0;max-width:none;writing-mode:vertical-rl;transform:rotate(180deg);font-family:var(--mono);font-style:normal;font-weight:500;font-size:.92rem;letter-spacing:.3em;text-transform:uppercase;white-space:pre;overflow:hidden;color:var(--print);text-shadow:0 0 6px var(--printglow),0 0 1px rgba(232,190,140,.8);opacity:.8;pointer-events:none;-webkit-mask-image:linear-gradient(180deg,transparent,#000 10%,#000 90%,transparent);mask-image:linear-gradient(180deg,transparent,#000 10%,#000 90%,transparent);transition:color .3s,text-shadow .3s}
 .hero .hero-name::before{content:"▸ 5219  ";opacity:.6}
-.hero .hero-name::after{content:"  ▸  14A  ▸  EDITOR DE VÍDEO & MOTION  ▸  24 FPS  ▸  URIEL PENNA  ▸  5219  ▸  14A  ▸  EDITOR DE VÍDEO & MOTION  ▸  24 FPS";opacity:.62}
+.hero .hero-name::after{content:"  ▸  EDITOR DE VÍDEO & MOTION  ▸  24 FPS  ▸  URIEL PENNA  ▸  5219  ▸  EDITOR DE VÍDEO & MOTION  ▸  24 FPS";opacity:.62}
 html.edge-light .hero .hero-name{color:#8E2434;text-shadow:none;opacity:.85}
 /* contador de quadro nas seções */
 body{counter-reset:fr}
@@ -244,8 +247,8 @@ footer .wrap::before{font-size:.58rem;letter-spacing:.22em}
 }
 
 .hero .kicker{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;margin:0;padding:0}
-html[lang="en"] .hero .hero-name::after{content:"  ▸  14A  ▸  VIDEO EDITOR & MOTION DESIGNER  ▸  24 FPS  ▸  URIEL PENNA  ▸  5219  ▸  14A  ▸  VIDEO EDITOR & MOTION DESIGNER"}
-html[lang="es"] .hero .hero-name::after{content:"  ▸  14A  ▸  EDITOR DE VIDEO & MOTION DESIGNER  ▸  24 FPS  ▸  URIEL PENNA  ▸  5219  ▸  14A  ▸  EDITOR DE VIDEO & MOTION DESIGNER"}
+html[lang="en"] .hero .hero-name::after{content:"  ▸  VIDEO EDITOR & MOTION DESIGNER  ▸  24 FPS  ▸  URIEL PENNA  ▸  5219  ▸  VIDEO EDITOR & MOTION DESIGNER"}
+html[lang="es"] .hero .hero-name::after{content:"  ▸  EDITOR DE VIDEO & MOTION DESIGNER  ▸  24 FPS  ▸  URIEL PENNA  ▸  5219  ▸  EDITOR DE VIDEO & MOTION DESIGNER"}
 html[lang="en"] footer .wrap::before{content:"▸ END OF REEL   ▸   5219   ▸   24 FPS"}
 html[lang="es"] footer .wrap::before{content:"▸ FIN DEL ROLLO   ▸   5219   ▸   24 FPS"}
 </style><style>figcaption .t{font-weight:400}figcaption .t b{font-weight:700}</style><style>.about-grid{grid-template-columns:minmax(240px,340px) 1fr;gap:4.5rem}
@@ -355,22 +358,6 @@ html[lang="es"] footer .wrap::before{content:"▸ FIN DEL ROLLO   ▸   5219   �
     <div class="wrap">
       <div class="sec-head reveal">
         <span class="sec-num"><svg class="slate" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="3" y="9" width="18" height="11" rx="1.5"/><path d="M4 8l16-4M7.5 7.3l2.4 2.2M12.2 6.1l2.4 2.2M17 4.9l2.4 2.2"/></svg><span data-i18n="s2.num">CENA 02</span></span>
-        <svg class="parade" viewBox="0 0 120 44" fill="none" aria-hidden="true">
-<path d="M8 32 C 24 32, 30 10, 48 10" stroke="#8E2434" stroke-width="1.4"/>
-<line x1="8" y1="32" x2="21" y2="32" stroke="#57524B" stroke-width="0.8"/>
-<circle cx="21" cy="32" r="1.6" stroke="#57524B" stroke-width="0.8"/>
-<line x1="48" y1="10" x2="35" y2="10" stroke="#57524B" stroke-width="0.8"/>
-<circle cx="35" cy="10" r="1.6" stroke="#57524B" stroke-width="0.8"/>
-<rect x="6.2" y="30.2" width="3.6" height="3.6" stroke="#8E2434" stroke-width="0.9"/>
-<rect x="46.2" y="8.2" width="3.6" height="3.6" stroke="#8E2434" stroke-width="0.9"/>
-<line x1="58" y1="38" x2="116" y2="38" stroke="#57524B" stroke-width="0.8"/>
-<path d="M66 36.4v3.2 M76 36.4v3.2 M86 36.4v3.2 M96 36.4v3.2 M106 36.4v3.2" stroke="#57524B" stroke-width="0.8"/>
-<path d="M66 34.6 L69.4 38 L66 41.4 L62.6 38 Z" fill="#8E2434"/>
-<path d="M96 34.6 L99.4 38 L96 41.4 L92.6 38 Z" stroke="#8E2434" stroke-width="0.9"/>
-<path d="M112 34.6 L115.4 38 L112 41.4 L108.6 38 Z" fill="#8E2434"/>
-<path d="M78 27 L75.4 22.5 L80.6 22.5 Z" fill="#C85A70"/>
-<line x1="78" y1="27" x2="78" y2="43" stroke="#C85A70" stroke-width="1"/>
-</svg>
         <h2 class="sec-title">Motion Graphics</h2>
         <p class="sec-desc" data-i18n-html="s2.desc">Vinhetas e animações para marcas e instituições: três peças para <strong>Bradesco Seguros</strong>, abertura para a <strong>FGV EMAp</strong> e campanha para o <strong>Colégio Batista</strong>.</p>
       </div>
@@ -394,7 +381,7 @@ html[lang="es"] footer .wrap::before{content:"▸ FIN DEL ROLLO   ▸   5219   �
         <figure class="video reveal">
           <div class="frame" data-vimeo="139517993">
             <img src="https://i.vimeocdn.com/video/535382759-874c0546a553264d889e7c607b6afe762e49f12da4daefae18beeaf7bd39bf1d-d_640?region=us" alt="Abertura — FGV EMAp" loading="lazy">
-            <video class="loop" muted loop playsinline preload="none" aria-hidden="true"><source src="3-v-loop3.mp4" type="video/mp4"></video>
+            <video class="loop" muted loop playsinline preload="none" aria-hidden="true"><source src="2-sc-fgv.mp4" type="video/mp4"></video>
             <div class="play"><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span></div>
           </div>
           <figcaption><span class="t">Abertura — <b>FGV EMAp</b></span><span class="m" data-i18n="s2.m">motion &amp; animação</span></figcaption>
@@ -463,7 +450,7 @@ html[lang="es"] footer .wrap::before{content:"▸ FIN DEL ROLLO   ▸   5219   �
       <div class="videos trio">
         <figure class="video reveal">
           <div class="frame" data-vimeo="413414276">
-            <video class="loop" autoplay muted loop playsinline preload="auto" aria-hidden="true"><source src="4-loop1s.mp4" type="video/mp4"></video>
+            <video class="loop" autoplay muted loop playsinline preload="auto" aria-hidden="true"><source src="3-sc-mocha.mp4" type="video/mp4"></video>
             <div class="play"><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span></div>
           </div>
           <figcaption><span class="t">.Pormenor — <b>Coleção Moca</b></span><span class="m" data-i18n="s4.m">direção, captação &amp; edição</span></figcaption>
@@ -496,7 +483,7 @@ html[lang="es"] footer .wrap::before{content:"▸ FIN DEL ROLLO   ▸   5219   �
         <figure class="video reveal">
           <div class="frame" data-vimeo="722813737">
             <img src="https://i.vimeocdn.com/video/1455570329-d997eb267cc51f3df2eacc97d0ca1225c47afee2c0169a227d54b28f37c6c361-d_640?region=us" alt="Casa das Caldeiras — evento" loading="lazy">
-            <video class="loop" muted loop playsinline preload="none" aria-hidden="true"><source src="5-v-loop5.mp4" type="video/mp4"></video>
+            <video class="loop" muted loop playsinline preload="none" aria-hidden="true"><source src="4-sc-cald.mp4" type="video/mp4"></video>
             <div class="play"><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span></div>
           </div>
           <figcaption><span class="t"><b>Casa das Caldeiras</b></span><span class="m" data-i18n="s5.m">captação &amp; edição</span></figcaption>
@@ -531,7 +518,7 @@ html[lang="es"] footer .wrap::before{content:"▸ FIN DEL ROLLO   ▸   5219   �
         <figure class="video reveal">
           <div class="frame" data-vimeo="438927114">
             <img src="https://i.vimeocdn.com/video/1153907867-444a9aa14b941a01df280dbd0a5a0352711b1065f0cfaa5c6452edc3e4f3c22d-d_640?region=us" alt="Casa em Interlagos" loading="lazy">
-            <video class="loop" muted loop playsinline preload="none" aria-hidden="true"><source src="8-v-loop8.mp4" type="video/mp4"></video>
+            <video class="loop" muted loop playsinline preload="none" aria-hidden="true"><source src="5-sc-interl.mp4" type="video/mp4"></video>
             <div class="play"><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span></div>
           </div>
           <figcaption><span class="t"><b>Casa em Interlagos</b></span><span class="m" data-i18n="s6.m">captação &amp; edição</span></figcaption>
@@ -588,7 +575,7 @@ html[lang="es"] footer .wrap::before{content:"▸ FIN DEL ROLLO   ▸   5219   �
         <p data-i18n-html="about.p1">Moro em Paraty, entre a mata e o mar, e trabalho com clientes do Brasil inteiro. Venho do circo e das artes cênicas: foi lá que aprendi ritmo, tempo e presença — e é disso que um corte é feito. Até hoje é assim que eu perco a noção do tempo: ensinando, tocando música, dançando. É o mesmo estado que procuro em toda montagem.</p>
         <p data-i18n-html="about.p2">Nos últimos anos editei para o Ecommerce na Prática, animei vinhetas para o Bradesco Seguros e a FGV EMAp, e dirigi videoclipes e filmes de dança autorais. Na captação, meu lugar é perto das pessoas: escuta primeiro, câmera depois. A dança e o plano-sequência me ensinaram a filmar sem interromper o que está acontecendo.</p>
         <p data-i18n-html="about.p3">Gosto de ficha técnica curta e conversa verdadeira, sem julgamento: você explica o projeto, eu devolvo um vídeo que funciona — e que parece com você.</p>
-        <p class="sig" data-i18n="about.sig">— Uriel Penna, Paraty · atende remoto</p>
+        <p class="sig" data-i18n="about.sig">— Uriel Penna</p>
       </div>
     </div>
   </section>
@@ -606,7 +593,7 @@ html[lang="es"] footer .wrap::before{content:"▸ FIN DEL ROLLO   ▸   5219   �
         <a href="https://instagram.com/urielpenna" target="_blank" rel="noopener">Instagram</a>
         <a href="https://linkedin.com/in/urielpenna" target="_blank" rel="noopener">LinkedIn</a>
       </div>
-      <p class="sign" data-i18n-html="contact.sign"><b>Uriel Penna</b> · editor &amp; motion designer</p>
+      <p class="sign" data-i18n-html="contact.sign"><b>Uriel Penna</b><span class="dot"> · </span>editor &amp; motion designer</p>
     </div>
   </section>
 </main>
@@ -640,11 +627,11 @@ const I18N = {
     "about.p1":"Moro em Paraty, entre a mata e o mar, e trabalho com clientes do Brasil inteiro. Venho do circo e das artes cênicas: foi lá que aprendi ritmo, tempo e presença — e é disso que um corte é feito. Até hoje é assim que eu <strong>perco a noção do tempo</strong>: ensinando, tocando música, dançando. É o mesmo estado que procuro em toda montagem.",
     "about.p2":"Nos últimos anos editei para o <strong>Ecommerce na Prática</strong>, animei vinhetas para o <strong>Bradesco Seguros</strong> e a <strong>FGV EMAp</strong>, e dirigi videoclipes e filmes de dança autorais. Na captação, meu lugar é perto das pessoas: <strong>escuta primeiro, câmera depois</strong>. A dança e o plano-sequência me ensinaram a filmar sem interromper o que está acontecendo.",
     "about.p3":"Gosto de ficha técnica curta e conversa verdadeira, sem julgamento: você explica o projeto, eu devolvo <strong>um vídeo que funciona — e que parece com você</strong>.",
-    "about.sig":"— Uriel Penna, Paraty · atende remoto",
+    "about.sig":"— Uriel Penna",
     "contact.h2":"Tem um projeto <em>na mesa?</em>",
     "contact.p":"Me conta o que você precisa editar, animar ou filmar. Respondo no WhatsApp, sem formulário e sem intermediário.",
     "contact.cta":"Chamar no WhatsApp",
-    "contact.sign":"<b>Uriel Penna</b> · editor & motion designer",
+    "contact.sign":"<b>Uriel Penna</b><span class="dot"> · </span>editor & motion designer",
     "footer.1":"© 2026 Uriel Penna — Paraty, Brasil","footer.2":"Feito à mão, frame a frame."
   },
   en: {
@@ -668,11 +655,11 @@ const I18N = {
     "about.p1":"I live in Paraty, between the forest and the sea, and work with clients across Brazil and abroad. I come from the circus and the performing arts: that is where I learned rhythm, timing and presence — the raw material of every cut. It is still how I <strong>lose track of time</strong>: teaching, playing music, dancing. The same state I look for in every edit.",
     "about.p2":"In recent years I edited for <strong>Ecommerce na Prática</strong>, animated idents for <strong>Bradesco Seguros</strong> and <strong>FGV EMAp</strong>, and directed independent music videos and dance films. When shooting, my place is close to people: <strong>listening first, camera second</strong>. Dance and the long take taught me to film without interrupting what is happening.",
     "about.p3":"I like short credit lists and honest conversation, without judgment: you explain the project, I hand back <strong>a video that works — and that feels like you</strong>.",
-    "about.sig":"— Uriel Penna, Paraty · works remote",
+    "about.sig":"— Uriel Penna",
     "contact.h2":"Got a project <em>on the table?</em>",
     "contact.p":"Tell me what you need edited, animated or filmed. I answer on WhatsApp — no forms, no middlemen.",
     "contact.cta":"Message on WhatsApp",
-    "contact.sign":"<b>Uriel Penna</b> · video editor & motion designer",
+    "contact.sign":"<b>Uriel Penna</b><span class="dot"> · </span>video editor & motion designer",
     "footer.1":"© 2026 Uriel Penna — Paraty, Brazil","footer.2":"Handmade, frame by frame."
   },
   es: {
@@ -696,11 +683,11 @@ const I18N = {
     "about.p1":"Vivo en Paraty, entre la mata y el mar, y trabajo con clientes de todo Brasil y del exterior. Vengo del circo y de las artes escénicas: ahí aprendí ritmo, tiempo y presencia — la materia prima de cada corte. Hasta hoy es así que <strong>pierdo la noción del tiempo</strong>: enseñando, tocando música, bailando. El mismo estado que busco en cada montaje.",
     "about.p2":"En los últimos años edité para <strong>Ecommerce na Prática</strong>, animé vinhetas para <strong>Bradesco Seguros</strong> y <strong>FGV EMAp</strong>, y dirigí videoclips y films de danza autorais. En la captación, mi lugar es cerca de las personas: <strong>escucha primero, cámara después</strong>. La danza y el plano-secuencia me enseñaron a filmar sin interrumpir lo que está pasando.",
     "about.p3":"Me gustan las fichas técnicas cortas y la conversación verdadera, sin juicio: tú explicas el proyecto, yo devuelvo <strong>un video que funciona — y que se parece a ti</strong>",
-    "about.sig":"— Uriel Penna, Paraty · trabaja remoto",
+    "about.sig":"— Uriel Penna",
     "contact.h2":"¿Tienes un proyecto <em>en la mesa?</em>",
     "contact.p":"Cuéntame qué necesitas editar, animar o filmar. Respondo por WhatsApp, sin formularios ni intermediarios.",
     "contact.cta":"Escribir por WhatsApp",
-    "contact.sign":"<b>Uriel Penna</b> · editor & motion designer",
+    "contact.sign":"<b>Uriel Penna</b><span class="dot"> · </span>editor & motion designer",
     "footer.1":"© 2026 Uriel Penna — Paraty, Brasil","footer.2":"Hecho a mano, frame a frame."
   }
 };
@@ -849,7 +836,6 @@ function S(x,f,ph){return .5+.5*Math.sin(6.2832*(x*f+ph))}
 function u(){t=false;var h=Math.max(1,d.scrollHeight-innerHeight),x=Math.min(1,Math.max(0,scrollY/h)),k=m.matches?.85:1;
 d.style.setProperty('--la',((.16+.34*S(x,2,0))*k).toFixed(3));
 d.style.setProperty('--lc',((.14+.40*S(x,2.5,.35))*k).toFixed(3));
-d.style.setProperty('--ld',((.06+.42*S(x,3,.7))*k).toFixed(3));
 if(A&&P&&!r.matches){var b=A.getBoundingClientRect(),p=(b.top+b.height/2-innerHeight/2)/(innerHeight/2+b.height/2);p=Math.max(-1,Math.min(1,p));d.style.setProperty('--py',(p*-5.5).toFixed(2)+'%')}}
 addEventListener('scroll',function(){if(!t){t=true;requestAnimationFrame(u)}},{passive:true});addEventListener('resize',u);addEventListener('load',u);u()})()</script></body>
 </html>
