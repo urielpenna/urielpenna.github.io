@@ -244,7 +244,10 @@ html[lang="en"] .hero .hero-name::after{content:"  ▸  14A  ▸  VIDEO EDITOR &
 html[lang="es"] .hero .hero-name::after{content:"  ▸  14A  ▸  EDITOR DE VIDEO & MOTION DESIGNER  ▸  24 FPS  ▸  URIEL PENNA  ▸  5219  ▸  14A  ▸  EDITOR DE VIDEO & MOTION DESIGNER"}
 html[lang="en"] footer .wrap::before{content:"▸ END OF REEL   ▸   5219   ▸   24 FPS"}
 html[lang="es"] footer .wrap::before{content:"▸ FIN DEL ROLLO   ▸   5219   ▸   24 FPS"}
-</style><style>figcaption .t{font-weight:400}figcaption .t b{font-weight:700}</style></head>
+</style><style>figcaption .t{font-weight:400}figcaption .t b{font-weight:700}</style><style>.about-grid{grid-template-columns:minmax(240px,340px) 1fr;gap:4.5rem}
+.about-photo{margin:0;position:sticky;top:6rem}
+.about-grid .about-photo img{display:block;width:100%;height:auto;aspect-ratio:4/5;object-fit:cover;border-radius:14px;border:1px solid var(--line);box-shadow:0 18px 40px -22px rgba(0,0,0,.7)}
+@media(max-width:720px){.about-grid{grid-template-columns:1fr;gap:2rem}.about-photo{position:static;max-width:300px}.about-grid .about-photo img{width:100%}}</style></head>
 <body>
 <div class="grain" aria-hidden="true"></div>
 <div class="vig" aria-hidden="true"></div>
@@ -566,7 +569,7 @@ html[lang="es"] footer .wrap::before{content:"▸ FIN DEL ROLLO   ▸   5219   �
   </section>
   <section class="about" id="sobre">
     <div class="wrap about-grid">
-      <img src="mark-bordeaux.png" alt="Marca de Uriel Penna: pena com anel de planeta">
+      <figure class="about-photo"><img id="aboutPhoto" src="1-about-alt1.jpg" width="640" height="800" loading="lazy" alt="Retrato de Uriel Penna sorrindo, com cachos e bigode, contra uma parede de tijolos"></figure>
       <div class="reveal">
         <h2 data-i18n="about.h2">Editor de vídeo, motion designer e artesão de experiências audiovisuais.</h2>
         <p data-i18n-html="about.p1">Moro em Paraty, entre a mata e o mar, e trabalho com clientes do Brasil inteiro. Venho do circo e das artes cênicas: foi lá que aprendi ritmo, tempo e presença — e é disso que um corte é feito. Até hoje é assim que eu perco a noção do tempo: ensinando, tocando música, dançando. É o mesmo estado que procuro em toda montagem.</p>
@@ -699,6 +702,7 @@ function setLang(l){
     const k = el.getAttribute('data-i18n-html');
     if (dict[k] !== undefined) el.innerHTML = dict[k];
   });
+  (function(){var p=document.getElementById('aboutPhoto');if(p)p.alt=({pt:'Retrato de Uriel Penna sorrindo, com cachos e bigode, contra uma parede de tijolos',en:'Portrait of Uriel Penna smiling, curly hair and moustache, against a brick wall',es:'Retrato de Uriel Penna sonriendo, con rizos y bigote, ante una pared de ladrillos'})[l]||p.alt})();
   document.querySelectorAll('.langs button').forEach(b => b.setAttribute('aria-pressed', b.dataset.lang === l ? 'true' : 'false'));
   try { localStorage.setItem('up-lang', l); } catch(e) {}
 }
