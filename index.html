@@ -121,6 +121,14 @@ figure.video{position:relative}
 .frame:hover img,.frame:hover video.loop{transform:scale(1.045);opacity:1}
 .frame iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
 .frame video.loop{width:100%;height:100%;object-fit:cover;display:block;position:absolute;inset:0;z-index:1;transition:transform 1.25s cubic-bezier(.22,.61,.21,1)}
+/* mesa de luz: grão de película dentro dos quadros + varredura de leak no hover */
+.frame::before{content:"";position:absolute;inset:0;z-index:2;pointer-events:none;mix-blend-mode:overlay;opacity:.2;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+.frame::after{content:"";position:absolute;top:0;bottom:0;left:-60%;width:60%;z-index:2;pointer-events:none;mix-blend-mode:screen;opacity:0;background:linear-gradient(100deg,transparent 0,rgba(214,92,26,.0) 12%,rgba(255,160,70,.5) 42%,rgba(142,36,52,.45) 66%,transparent 100%);transform:skewX(-14deg);transition:opacity .2s}
+.frame:hover::after{opacity:1;animation:leakSweep 1.1s cubic-bezier(.3,.6,.25,1) forwards}
+@keyframes leakSweep{from{left:-60%}to{left:115%}}
+.hero::before{content:"";position:absolute;left:0;top:-64px;width:100%;height:calc(100% + 64px);z-index:1;pointer-events:none;mix-blend-mode:overlay;opacity:.22;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+@media(hover:none){.frame:hover::after{animation:none;opacity:0}}
+@media(prefers-reduced-motion:reduce){.frame:hover::after{animation:none;opacity:0}}
 .play{position:absolute;inset:0;display:grid;place-items:center;z-index:2}
 .play span{width:64px;height:64px;border-radius:50%;border:1px solid rgba(242,239,232,.6);display:grid;place-items:center;background:rgba(11,9,9,.45);transition:background .25s,border-color .25s,transform .25s}
 .play svg{width:18px;height:18px;fill:var(--ink);margin-left:3px}
