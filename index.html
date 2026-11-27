@@ -166,7 +166,7 @@ footer img{height:20px;width:auto;opacity:.8}
 .hud .tc{bottom:12px;right:36px;letter-spacing:.1em}
 @keyframes blink{50%{opacity:.12}}
 @media(max-width:720px){.hud .tc{display:none}}
-@media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none}.btn{transition:none}.grain,.vig,.hud .rec i,.hero-scope{animation:none}.scroll-cue i::after{animation:none}.burn{display:none}video.hero-mark{display:none}.hero-mark-static{display:block}video.hero-bg{display:none}.hero-bg-static{display:block}}
+@media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none}.burn{display:none}}
 
 .slate{width:1em;height:1em;vertical-align:-0.15em;margin-right:.55em;color:var(--accent);}
 .sec-head{position:relative;will-change:transform}.sec-head.reveal.in{transition-property:opacity}
@@ -471,10 +471,10 @@ video.hero-mark{mix-blend-mode:screen;opacity:.2}
         <img src="client-vudoo.png" alt="Vudoo Filmes" style="height:50px">
         <img src="18-client-batista.png" alt="Colégio Batista Brasil" style="height:44px">
         <img src="client-acsp.png" alt="Associação Comercial de São Paulo" style="height:44px">
-        <span class="wm">Costazul</span>
-        <span class="wm">Sushi Rão</span>
-        <span class="wm">Estúdio Paralax</span>
-        <span class="wm">Banana Filmes</span>
+        <img src="1-client-costazul.png" alt="Costazul Supermercados" style="height:44px">
+        <img src="2-client-sushirao.png" alt="Sushi Rão" style="height:44px">
+        <img src="3-client-paralax.png" alt="Estúdio Paralax" style="height:26px">
+        <img src="4-client-banana.png" alt="Banana Filmes" style="height:44px">
       </div>
     </div>
   </section>
@@ -660,10 +660,9 @@ document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 var reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
 var bar = document.getElementById('progress');
 var burn = document.getElementById('burn');
-var vids = document.querySelectorAll('video.hero-mark');
 if (burn && !reduced) burn.classList.add('go');
-if (reduced) vids.forEach(function(v){ v.pause(); });
-if (!reduced){
+var amp = reduced ? 0.4 : 1;
+{
   var mark = document.querySelector('video.hero-mark');
   var heads = document.querySelectorAll('.sec-head');
   var parades = document.querySelectorAll('.parade');
@@ -675,16 +674,16 @@ if (!reduced){
     var h = document.documentElement;
     var p = h.scrollTop / Math.max(1, h.scrollHeight - h.clientHeight);
     if (bar) bar.style.width = (p*100).toFixed(2) + '%';
-    if (mark) mark.style.transform = 'translateY(calc(-50% + ' + (h.scrollTop*0.26) + 'px))';
+    if (mark) mark.style.transform = 'translateY(calc(-50% + ' + (h.scrollTop*0.26*amp) + 'px))';
     var vh = h.clientHeight;
     parades.forEach(function(el){
       var pr = el.getBoundingClientRect();
-      var poff = (pr.top + pr.height/2 - vh/2) * 0.22;
+      var poff = (pr.top + pr.height/2 - vh/2) * 0.22 * amp;
       el.style.transform = 'translateY(' + poff.toFixed(1) + 'px)';
     });
     heads.forEach(function(el){
       var r = el.getBoundingClientRect();
-      var off = (r.top + r.height/2 - vh/2) * -0.14;
+      var off = (r.top + r.height/2 - vh/2) * -0.14 * amp;
       el.style.transform = 'translateY(' + off.toFixed(1) + 'px)';
     });
   }
@@ -695,10 +694,6 @@ if (!reduced){
 (function(){
   var loops = Array.from(document.querySelectorAll('video.loop'));
   var mark = document.querySelector('video.hero-mark');
-  if (matchMedia('(prefers-reduced-motion: reduce)').matches){
-    loops.forEach(function(v){ v.removeAttribute('autoplay'); v.pause(); });
-    return;
-  }
   function tryPlay(v){ if (v && v.paused) { var p = v.play(); if (p && p.catch) p.catch(function(){}); } }
   var targets = mark ? loops.concat([mark]) : loops;
   if ('IntersectionObserver' in window){
