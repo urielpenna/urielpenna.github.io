@@ -71,6 +71,7 @@ header{position:fixed;inset:0 0 auto 0;z-index:50;background:rgba(11,9,9,.86);ba
 .hero .wrap,.hero .scroll-cue{position:relative;z-index:2}
 .hero .scroll-cue{position:absolute}
 .hero-scope{z-index:1}
+.hero .hero-name{max-width:none;font-family:var(--serif);font-style:italic;font-weight:400;font-size:clamp(2.6rem,7vw,5rem);line-height:1;letter-spacing:-.015em;color:var(--beige);margin:0 0 1.4rem}
 .hero .kicker{font-family:var(--mono);font-size:.85rem;letter-spacing:.22em;text-transform:uppercase;color:var(--accent-hi);display:block;max-width:none;white-space:nowrap}
 .kicker .kb{display:block;margin:.5rem 0 0 calc(2.6rem + .9rem);font-size:.72rem;letter-spacing:.24em;opacity:.85}
 .kicker::before{content:"";display:inline-block;width:2.6rem;height:1px;background:var(--accent);vertical-align:middle;margin-right:.9rem}
@@ -96,15 +97,13 @@ header{position:fixed;inset:0 0 auto 0;z-index:50;background:rgba(11,9,9,.86);ba
 @media(max-width:720px){.stats .wrap{grid-template-columns:1fr;gap:.4rem 0}.stat{padding:1.4rem 0}.stat:nth-child(odd){border-left:none;padding-left:0}.stat .f{display:none}.stat .s{display:block}}
 section.work{padding:6.5rem 0 3rem;min-height:100vh;min-height:100svh;display:flex;flex-direction:column;justify-content:center}
 section.work,section.about{position:relative;overflow:hidden}
-section.work::before,section.about::before{content:"";position:absolute;inset:0;pointer-events:none;opacity:.06;z-index:0;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
 /* light leaks: overlays fotográficos de tela (screen), ancorados nas seções, sem linhas */
-section.work.lka::after,section.work.lkb::after,section.work.lkc::after,section.work.lkd::after{content:"";position:absolute;left:0;right:0;height:56%;pointer-events:none;z-index:0;mix-blend-mode:screen;background:url("1-leak-a.webp") center/cover no-repeat;opacity:.34;-webkit-mask-image:linear-gradient(to bottom,#000 0,#000 25%,transparent 100%);mask-image:linear-gradient(to bottom,#000 0,#000 25%,transparent 100%)}
-section.work.lka::after{top:0}
-section.work.lkb::after{top:0;background-image:url("2-leak-b.webp");transform:scaleX(-1)}
-section.work.lkc::after{bottom:0;top:auto;background-image:url("2-leak-b.webp");-webkit-mask-image:linear-gradient(to top,#000 0,#000 25%,transparent 100%);mask-image:linear-gradient(to top,#000 0,#000 25%,transparent 100%)}
-section.work.lkd::after{top:0;background-image:url("1-leak-a.webp");transform:scaleX(-1)}
-@media(max-width:720px){section.work[class*=lk]::after{height:42%;opacity:.3}}
-@media(prefers-reduced-motion:reduce){section.work[class*=lk]::after{opacity:.3}}
+/* fundo único: vazamentos de luz e grão ficam fixos na viewport, todas as seções passam por cima do mesmo material */
+body::before,body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:-1}
+body::before{mix-blend-mode:screen;opacity:.4;background:url("1-leak-a.webp") left top/80% 70% no-repeat;-webkit-mask-image:radial-gradient(ellipse 74% 62% at 0% 0%,#000 0,#000 18%,transparent 100%);mask-image:radial-gradient(ellipse 74% 62% at 0% 0%,#000 0,#000 18%,transparent 100%)}
+html::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:-1;mix-blend-mode:screen;opacity:.4;background:url("2-leak-b.webp") right bottom/80% 70% no-repeat;-webkit-mask-image:radial-gradient(ellipse 74% 62% at 100% 100%,#000 0,#000 18%,transparent 100%);mask-image:radial-gradient(ellipse 74% 62% at 100% 100%,#000 0,#000 18%,transparent 100%)}
+body::after{opacity:.07;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+@media(max-width:720px){body::before,html::before{opacity:.34;background-size:130% 50%}}
 section.work>.wrap,section.about>.wrap{position:relative;z-index:1}
 .sec-head{display:grid;grid-template-columns:auto 1fr;gap:1.5rem 3rem;align-items:end;margin-bottom:3rem}
 .sec-num{font-family:var(--mono);font-size:.85rem;color:var(--accent-hi);letter-spacing:.2em;padding-bottom:.6rem}
@@ -143,8 +142,8 @@ figcaption.vo{justify-content:flex-end}
 figcaption.vo .m{font-size:.8rem}
 figcaption.vo .m b{font-size:1.35rem;font-weight:700;color:var(--accent-hi);letter-spacing:.03em;margin-right:.4rem}
 .clients{background:var(--beige);color:var(--beige-ink);padding:4.5rem 0;margin-top:4rem}
-.clients .label{font-family:var(--mono);font-weight:500;font-size:1.3rem;letter-spacing:.16em;text-transform:uppercase;color:#6E1B29;margin-bottom:1.8rem}
-.clients .sub{font-family:var(--sans);font-weight:500;font-size:1.3rem;color:rgba(22,17,18,.92);margin:-.6rem 0 2.6rem;max-width:56ch;text-wrap:pretty}
+.clients .label{font-family:var(--mono);font-weight:500;font-size:clamp(1.5rem,4.4vw,2.6rem);letter-spacing:.14em;text-transform:uppercase;color:#6E1B29;margin:0 auto .5rem;text-align:center;text-wrap:balance;line-height:1.15}
+.clients .sub{font-family:var(--sans);font-weight:500;font-size:clamp(1.15rem,2.4vw,1.6rem);line-height:1.45;color:rgba(22,17,18,.92);margin:0 auto 3.4rem;max-width:44ch;text-align:center;text-wrap:balance}
 .client-grid{display:flex;flex-direction:column;align-items:center;gap:2.6rem;max-width:1240px;margin-inline:auto}
 .crow{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:2.6rem 3.4rem}
 @media(max-width:720px){.client-grid{flex-direction:row;flex-wrap:wrap;justify-content:center;gap:2.2rem 2rem}.crow{display:contents}}
@@ -214,7 +213,38 @@ footer img{height:20px;width:auto;opacity:.8}
 .scroll-cue i::after{content:"";position:absolute;left:0;top:-100%;width:100%;height:100%;background:var(--accent-hi);animation:cueDrop 2.1s cubic-bezier(.65,0,.35,1) infinite}
 @keyframes cueDrop{0%{top:-100%}55%{top:0}100%{top:100%}}
 </style>
-</head>
+<style>.hero-bg,.hero::after{-webkit-mask-image:linear-gradient(180deg,transparent 0,#000 22%,#000 62%,transparent 100%);mask-image:linear-gradient(180deg,transparent 0,#000 22%,#000 62%,transparent 100%)}</style><style>figure.video{position:relative}figcaption.vo{width:max-content;max-width:calc(100% - 1.2rem);right:auto;position:absolute;left:1rem;bottom:1rem;margin:0;background:var(--accent);padding:.55rem 1.1rem .65rem;border-radius:8px;z-index:3;box-shadow:0 6px 24px rgba(0,0,0,.35);display:block}figcaption.vo .m{display:grid;grid-template-columns:auto auto;justify-content:start;align-items:baseline;column-gap:.55rem;color:var(--beige);white-space:normal}figcaption.vo .m b{font-size:clamp(1.5rem,3.2vw,2.3rem);color:#fff;margin:0;letter-spacing:0;line-height:1.1}figcaption.vo .m .vw{font-size:.85rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#fff}figcaption.vo .m .lt{grid-column:1/-1;font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;opacity:.85}@media(max-width:720px){figcaption.vo{left:.6rem;bottom:.6rem;padding:.35rem .7rem .4rem}figcaption.vo .m b{font-size:1.25rem}figcaption.vo .m .vw{font-size:.66rem}figcaption.vo .m .lt{font-size:.54rem}}</style><style>
+:root{--print:#EADFCB;--printglow:rgba(232,190,140,.42)}
+/* gutter para a margem do rolo */
+section .wrap,footer .wrap{width:min(1240px,100% - 6rem)}
+.hero{overflow:hidden}.hero-scope{display:none}
+.hero .wrap{position:relative;z-index:2}
+/* margem fixa */
+.hero .hero-name{display:block;position:fixed;z-index:40;right:1.15rem;top:84px;bottom:1.2rem;margin:0;max-width:none;writing-mode:vertical-rl;transform:rotate(180deg);font-family:var(--mono);font-style:normal;font-weight:500;font-size:.92rem;letter-spacing:.3em;text-transform:uppercase;white-space:pre;overflow:hidden;color:var(--print);text-shadow:0 0 6px var(--printglow),0 0 1px rgba(232,190,140,.8);opacity:.8;pointer-events:none;-webkit-mask-image:linear-gradient(180deg,transparent,#000 10%,#000 90%,transparent);mask-image:linear-gradient(180deg,transparent,#000 10%,#000 90%,transparent);transition:color .3s,text-shadow .3s}
+.hero .hero-name::before{content:"▸ 5219  ";opacity:.6}
+.hero .hero-name::after{content:"  ▸  14A  ▸  EDITOR DE VÍDEO & MOTION  ▸  24 FPS  ▸  URIEL PENNA  ▸  5219  ▸  14A  ▸  EDITOR DE VÍDEO & MOTION  ▸  24 FPS";opacity:.62}
+html.edge-light .hero .hero-name{color:#8E2434;text-shadow:none;opacity:.85}
+/* contador de quadro nas seções */
+body{counter-reset:fr}
+section.work{counter-increment:fr}
+.work .sec-head{position:relative}
+.work .sec-head::before{content:"▸ " counter(fr,decimal-leading-zero) "A   ▸   24 FPS";display:block;grid-column:1/-1;font-family:var(--mono);font-size:.7rem;letter-spacing:.3em;color:var(--print);text-shadow:0 0 5px var(--printglow);opacity:.55;margin-bottom:.9rem}
+/* fim do rolo */
+footer .wrap::before{content:"▸ FIM DO ROLO   ▸   5219   ▸   24 FPS";flex-basis:100%;font-size:.7rem;letter-spacing:.3em;color:var(--print);text-shadow:0 0 5px var(--printglow);opacity:.55;border-top:1px solid rgba(232,190,140,.18);padding-top:1rem}
+@media(max-width:720px){
+section .wrap,footer .wrap{width:calc(100% - 3.4rem);margin-left:1.25rem;margin-right:auto}
+.hero{padding-right:0}
+.hero .hero-name{right:.4rem;top:76px;bottom:.8rem;font-size:.66rem;letter-spacing:.24em}
+.work .sec-head::before{font-size:.58rem;letter-spacing:.22em}
+footer .wrap::before{font-size:.58rem;letter-spacing:.22em}
+}
+
+.hero .kicker{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;margin:0;padding:0}
+html[lang="en"] .hero .hero-name::after{content:"  ▸  14A  ▸  VIDEO EDITOR & MOTION DESIGNER  ▸  24 FPS  ▸  URIEL PENNA  ▸  5219  ▸  14A  ▸  VIDEO EDITOR & MOTION DESIGNER"}
+html[lang="es"] .hero .hero-name::after{content:"  ▸  14A  ▸  EDITOR DE VIDEO & MOTION DESIGNER  ▸  24 FPS  ▸  URIEL PENNA  ▸  5219  ▸  14A  ▸  EDITOR DE VIDEO & MOTION DESIGNER"}
+html[lang="en"] footer .wrap::before{content:"▸ END OF REEL   ▸   5219   ▸   24 FPS"}
+html[lang="es"] footer .wrap::before{content:"▸ FIN DEL ROLLO   ▸   5219   ▸   24 FPS"}
+</style><style>figcaption .t{font-weight:400}figcaption .t b{font-weight:700}</style></head>
 <body>
 <div class="grain" aria-hidden="true"></div>
 <div class="vig" aria-hidden="true"></div>
@@ -248,6 +278,7 @@ footer img{height:20px;width:auto;opacity:.8}
 <circle cx="50" cy="50" r="4" stroke="#C85A70" stroke-width="0.8"/>
 </svg>
     <div class="wrap">
+      <p class="hero-name">Uriel Penna</p>
       <p class="kicker" data-i18n-html="hero.kicker">Editor de Vídeo &amp; Motion Designer <span class="kb">Paraty, Brasil</span></p>
       <h1 data-i18n-html="hero.title">Seu público compra de quem ele sente.<br><em>Eu edito essa sensação.</em></h1>
       <p data-i18n-html="hero.sub">Edição e motion design para canais, marcas e artistas. Da minha mesa de montagem saíram vídeos com mais de um milhão de views, vinhetas para o Bradesco Seguros e videoclipes autorais.</p>
@@ -263,7 +294,7 @@ footer img{height:20px;width:auto;opacity:.8}
   </section>
   <section class="stats" aria-label="Números">
     <div class="wrap">
-      <div class="stat reveal"><b>2,2 mi+</b><span class="f" data-i18n="stats.1">inscritos no canal que edito</span><span class="s" data-i18n="stats.1s">inscritos no canal</span></div>
+      <div class="stat reveal"><b>2,2 mi+</b><span class="f" data-i18n="stats.1">inscritos no canal que editei</span><span class="s" data-i18n="stats.1s">inscritos no canal</span></div>
       <div class="stat reveal"><b>1,49 mi</b><span data-i18n="stats.2">de views no vídeo mais assistido</span></div>
       <div class="stat reveal"><b>2011</b><span class="f" data-i18n="stats.4">na mesa de montagem desde então</span><span class="s" data-i18n="stats.4s">editando desde então</span></div>
     </div>
@@ -274,7 +305,7 @@ footer img{height:20px;width:auto;opacity:.8}
       <div class="sec-head reveal">
         <span class="sec-num"><svg class="slate" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="3" y="9" width="18" height="11" rx="1.5"/><path d="M4 8l16-4M7.5 7.3l2.4 2.2M12.2 6.1l2.4 2.2M17 4.9l2.4 2.2"/></svg><span data-i18n="s1.num">CENA 01</span></span>
         <h2 class="sec-title">YouTube — Ecommerce na Prática</h2>
-        <p class="sec-desc" data-i18n-html="s1.desc">Captação e edição para o maior canal de ecommerce do Brasil, com <strong>2,2 milhões de inscritos</strong>. Os vídeos mais vistos que editei passam de <strong>1,2 milhão de views</strong> cada.</p>
+        <p class="sec-desc" data-i18n-html="s1.desc">Captação e edição para o maior canal de ecommerce do Brasil, hoje com <strong>2,2 milhões de inscritos</strong>. Os vídeos mais vistos que editei passam de <strong>1,2 milhão de views</strong> cada (total de cada vídeo).</p>
       </div>
       <div class="videos">
         <figure class="video wide reveal">
@@ -283,7 +314,7 @@ footer img{height:20px;width:auto;opacity:.8}
             <video class="loop" muted loop playsinline preload="none" aria-hidden="true"><source src="6-yt-comecar.mp4" type="video/mp4"></video>
             <div class="play"><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span></div>
           </div>
-          <figcaption class="vo"><span class="m"><b>1.418.928</b> <span data-i18n="views">views</span></span></figcaption>
+          <figcaption class="vo"><span class="m"><b>1.418.928</b> <span class="vw" data-i18n="views">views no YouTube</span><span class="lt" data-i18n="views.t">total do vídeo, não só do meu período</span></span></figcaption>
         </figure>
         <figure class="video reveal">
           <div class="frame" data-yt="NaWNrVt34us">
@@ -291,7 +322,7 @@ footer img{height:20px;width:auto;opacity:.8}
             <video class="loop" muted loop playsinline preload="none" aria-hidden="true"><source src="4-yt-margem.mp4" type="video/mp4"></video>
             <div class="play"><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span></div>
           </div>
-          <figcaption class="vo"><span class="m"><b>1.491.955</b> <span data-i18n="views">views</span></span></figcaption>
+          <figcaption class="vo"><span class="m"><b>1.491.955</b> <span class="vw" data-i18n="views">views no YouTube</span><span class="lt" data-i18n="views.t">total do vídeo, não só do meu período</span></span></figcaption>
         </figure>
         <figure class="video reveal">
           <div class="frame" data-yt="ddpQtf-hO64">
@@ -299,7 +330,7 @@ footer img{height:20px;width:auto;opacity:.8}
             <video class="loop" muted loop playsinline preload="none" aria-hidden="true"><source src="5-yt-insta.mp4" type="video/mp4"></video>
             <div class="play"><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span></div>
           </div>
-          <figcaption class="vo"><span class="m"><b>1.266.865</b> <span data-i18n="views">views</span></span></figcaption>
+          <figcaption class="vo"><span class="m"><b>1.266.865</b> <span class="vw" data-i18n="views">views no YouTube</span><span class="lt" data-i18n="views.t">total do vídeo, não só do meu período</span></span></figcaption>
         </figure>
       </div>
     </div>
@@ -331,30 +362,34 @@ footer img{height:20px;width:auto;opacity:.8}
         <figure class="video reveal">
           <div class="frame" data-vimeo="139595205">
             <img src="https://i.vimeocdn.com/video/535586610-63fab22fcafd422a2015ff2289395e4f3b02888928fdccce161ff0f6d2c802e1-d_640?region=us" alt="Bradesco Seguros — Calendário Circuito Cultural" loading="lazy">
+            <video class="loop" muted loop playsinline preload="none" aria-hidden="true"><source src="1-v-loop1.mp4" type="video/mp4"></video>
             <div class="play"><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span></div>
           </div>
-          <figcaption><span class="t">Bradesco Seguros — Calendário Circuito Cultural</span><span class="m" data-i18n="s2.m">motion &amp; animação</span></figcaption>
+          <figcaption><span class="t"><b>Bradesco Seguros</b> — Calendário Circuito Cultural</span><span class="m" data-i18n="s2.m">motion &amp; animação</span></figcaption>
         </figure>
         <figure class="video reveal">
           <div class="frame" data-vimeo="133181445">
             <img src="https://i.vimeocdn.com/video/526170941-9b911bf9fba9bcc0ade5a9cc5a7caeeb651fe305ad86d83387b5f428ad5ee93c-d_640?region=us" alt="Bradesco Seguros — Vinheta Estacionamento" loading="lazy">
+            <video class="loop" muted loop playsinline preload="none" aria-hidden="true"><source src="2-v-loop2.mp4" type="video/mp4"></video>
             <div class="play"><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span></div>
           </div>
-          <figcaption><span class="t">Bradesco Seguros — Vinheta Estacionamento</span><span class="m" data-i18n="s2.m">motion &amp; animação</span></figcaption>
+          <figcaption><span class="t"><b>Bradesco Seguros</b> — Vinheta Estacionamento</span><span class="m" data-i18n="s2.m">motion &amp; animação</span></figcaption>
         </figure>
         <figure class="video reveal">
           <div class="frame" data-vimeo="139517993">
             <img src="https://i.vimeocdn.com/video/535382759-874c0546a553264d889e7c607b6afe762e49f12da4daefae18beeaf7bd39bf1d-d_640?region=us" alt="Abertura — FGV EMAp" loading="lazy">
+            <video class="loop" muted loop playsinline preload="none" aria-hidden="true"><source src="3-v-loop3.mp4" type="video/mp4"></video>
             <div class="play"><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span></div>
           </div>
-          <figcaption><span class="t">Abertura — FGV EMAp</span><span class="m" data-i18n="s2.m">motion &amp; animação</span></figcaption>
+          <figcaption><span class="t">Abertura — <b>FGV EMAp</b></span><span class="m" data-i18n="s2.m">motion &amp; animação</span></figcaption>
         </figure>
         <figure class="video reveal">
           <div class="frame" data-vimeo="210002691">
             <img src="https://i.vimeocdn.com/video/625689234-b159c31c827ae0b1d9a658bb990745d8b072419fbdfeadbb3c08f879c9d6f32d-d_640?region=us" alt="Colégio Batista — Compartilhe Conhecimento" loading="lazy">
+            <video class="loop" muted loop playsinline preload="none" aria-hidden="true"><source src="4-v-loop4.mp4" type="video/mp4"></video>
             <div class="play"><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span></div>
           </div>
-          <figcaption><span class="t">Colégio Batista — Compartilhe Conhecimento</span><span class="m" data-i18n="s2.m">motion &amp; animação</span></figcaption>
+          <figcaption><span class="t"><b>Colégio Batista</b> — Compartilhe Conhecimento</span><span class="m" data-i18n="s2.m">motion &amp; animação</span></figcaption>
         </figure>
       </div>
     </div>
@@ -370,10 +405,10 @@ footer img{height:20px;width:auto;opacity:.8}
         <figure class="video reveal">
           <div class="frame" data-yt="YeAnBna9EnA">
             <img src="https://i.ytimg.com/vi/YeAnBna9EnA/hqdefault.jpg" alt="DejaGu — MaguSol e Cuba Mercúrio" loading="lazy">
-            <video class="loop" muted loop playsinline preload="none" aria-hidden="true"><source src="3-yt-dejagu.mp4" type="video/mp4"></video>
+            <video class="loop" muted loop playsinline preload="none" aria-hidden="true"><source src="10-3-yt-dejagu.mp4" type="video/mp4"></video>
             <div class="play"><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span></div>
           </div>
-          <figcaption><span class="t">DejaGu — MaguSol e Cuba Mercúrio</span><span class="m" data-i18n="s3.m">direção &amp; edição</span></figcaption>
+          <figcaption><span class="t">DejaGu — <b>MaguSol e Cuba Mercúrio</b></span><span class="m" data-i18n="s3.m">direção &amp; edição</span></figcaption>
         </figure>
         <figure class="video reveal">
           <div class="frame" data-yt="HNef9iabx9k">
@@ -381,7 +416,7 @@ footer img{height:20px;width:auto;opacity:.8}
             <video class="loop" muted loop playsinline preload="none" aria-hidden="true"><source src="2-yt-madre.mp4" type="video/mp4"></video>
             <div class="play"><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span></div>
           </div>
-          <figcaption><span class="t">Ciranda — Madre Terra</span><span class="m" data-i18n="s3.m">direção &amp; edição</span></figcaption>
+          <figcaption><span class="t">Ciranda — <b>Madre Terra</b></span><span class="m" data-i18n="s3.m">direção &amp; edição</span></figcaption>
         </figure>
         <figure class="video reveal">
           <div class="frame" data-yt="H7ak0SefUUg">
@@ -389,7 +424,7 @@ footer img{height:20px;width:auto;opacity:.8}
             <video class="loop" muted loop playsinline preload="none" aria-hidden="true"><source src="3-yt-tukum.mp4" type="video/mp4"></video>
             <div class="play"><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span></div>
           </div>
-          <figcaption><span class="t">Quimera — TUKUM · Estúdio 185</span><span class="m" data-i18n="s3.m">direção &amp; edição</span></figcaption>
+          <figcaption><span class="t">Quimera — <b>TUKUM</b> · Estúdio 185</span><span class="m" data-i18n="s3.m">direção &amp; edição</span></figcaption>
         </figure>
         <figure class="video reveal">
           <div class="frame" data-yt="GEqNdAtAgA0">
@@ -397,7 +432,7 @@ footer img{height:20px;width:auto;opacity:.8}
             <video class="loop" muted loop playsinline preload="none" aria-hidden="true"><source src="1-yt-bicho.mp4" type="video/mp4"></video>
             <div class="play"><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span></div>
           </div>
-          <figcaption><span class="t">Semente — BICHO · Luciano Pessoa</span><span class="m" data-i18n="s3.m">direção &amp; edição</span></figcaption>
+          <figcaption><span class="t">Semente — <b>BICHO</b> · Luciano Pessoa</span><span class="m" data-i18n="s3.m">direção &amp; edição</span></figcaption>
         </figure>
       </div>
     </div>
@@ -415,21 +450,21 @@ footer img{height:20px;width:auto;opacity:.8}
             <video class="loop" autoplay muted loop playsinline preload="auto" aria-hidden="true"><source src="4-loop1s.mp4" type="video/mp4"></video>
             <div class="play"><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span></div>
           </div>
-          <figcaption><span class="t">.Pormenor — Coleção Moca</span><span class="m" data-i18n="s4.m">direção, captação &amp; edição</span></figcaption>
+          <figcaption><span class="t">.Pormenor — <b>Coleção Moca</b></span><span class="m" data-i18n="s4.m">direção, captação &amp; edição</span></figcaption>
         </figure>
         <figure class="video reveal">
           <div class="frame" data-vimeo="383437610">
             <video class="loop" autoplay muted loop playsinline preload="auto" aria-hidden="true"><source src="5-loop2s.mp4" type="video/mp4"></video>
             <div class="play"><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span></div>
           </div>
-          <figcaption><span class="t">André Oliveira</span><span class="m" data-i18n="s4.m">direção, captação &amp; edição</span></figcaption>
+          <figcaption><span class="t"><b>André Oliveira</b></span><span class="m" data-i18n="s4.m">direção, captação &amp; edição</span></figcaption>
         </figure>
         <figure class="video reveal">
           <div class="frame" data-vimeo="558268453">
             <video class="loop" autoplay muted loop playsinline preload="auto" aria-hidden="true"><source src="6-loop3s.mp4" type="video/mp4"></video>
             <div class="play"><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span></div>
           </div>
-          <figcaption><span class="t">Tandava — Luisa Barbosa</span><span class="m" data-i18n="s4.m">direção, captação &amp; edição</span></figcaption>
+          <figcaption><span class="t">Tandava — <b>Luisa Barbosa</b></span><span class="m" data-i18n="s4.m">direção, captação &amp; edição</span></figcaption>
         </figure>
       </div>
     </div>
@@ -445,23 +480,26 @@ footer img{height:20px;width:auto;opacity:.8}
         <figure class="video reveal">
           <div class="frame" data-vimeo="722813737">
             <img src="https://i.vimeocdn.com/video/1455570329-d997eb267cc51f3df2eacc97d0ca1225c47afee2c0169a227d54b28f37c6c361-d_640?region=us" alt="Casa das Caldeiras — evento" loading="lazy">
+            <video class="loop" muted loop playsinline preload="none" aria-hidden="true"><source src="5-v-loop5.mp4" type="video/mp4"></video>
             <div class="play"><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span></div>
           </div>
-          <figcaption><span class="t">Casa das Caldeiras</span><span class="m" data-i18n="s5.m">captação &amp; edição</span></figcaption>
+          <figcaption><span class="t"><b>Casa das Caldeiras</b></span><span class="m" data-i18n="s5.m">captação &amp; edição</span></figcaption>
         </figure>
         <figure class="video reveal">
           <div class="frame" data-vimeo="383435230">
             <img src="https://i.vimeocdn.com/video/844872170-7d89c6cef3de81e6fba666bfab936e00416fc76d200e2d4899355d3318ccf340-d_640?region=us" alt="ACSP — Campanha do Agasalho 2019" loading="lazy">
+            <video class="loop" muted loop playsinline preload="none" aria-hidden="true"><source src="6-v-loop6.mp4" type="video/mp4"></video>
             <div class="play"><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span></div>
           </div>
-          <figcaption><span class="t">ACSP — Campanha do Agasalho</span><span class="m" data-i18n="s5.m">captação &amp; edição</span></figcaption>
+          <figcaption><span class="t"><b>ACSP</b> — Campanha do Agasalho</span><span class="m" data-i18n="s5.m">captação &amp; edição</span></figcaption>
         </figure>
         <figure class="video reveal">
           <div class="frame" data-vimeo="558371173">
             <img src="https://i.vimeocdn.com/video/1154019501-bb907f0243b6f83b439d26b25f8867bcec9f3035a1586e555e3fe293e0636680-d_640?region=us" alt="Estúdio Paralax — institucional" loading="lazy">
+            <video class="loop" muted loop playsinline preload="none" aria-hidden="true"><source src="7-v-loop7.mp4" type="video/mp4"></video>
             <div class="play"><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span></div>
           </div>
-          <figcaption><span class="t">Estúdio Paralax — Institucional</span><span class="m" data-i18n="s5.m">captação &amp; edição</span></figcaption>
+          <figcaption><span class="t"><b>Estúdio Paralax</b> — Institucional</span><span class="m" data-i18n="s5.m">captação &amp; edição</span></figcaption>
         </figure>
       </div>
     </div>
@@ -477,23 +515,25 @@ footer img{height:20px;width:auto;opacity:.8}
         <figure class="video reveal">
           <div class="frame" data-vimeo="438927114">
             <img src="https://i.vimeocdn.com/video/1153907867-444a9aa14b941a01df280dbd0a5a0352711b1065f0cfaa5c6452edc3e4f3c22d-d_640?region=us" alt="Casa em Interlagos" loading="lazy">
+            <video class="loop" muted loop playsinline preload="none" aria-hidden="true"><source src="8-v-loop8.mp4" type="video/mp4"></video>
             <div class="play"><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span></div>
           </div>
-          <figcaption><span class="t">Casa em Interlagos</span><span class="m" data-i18n="s6.m">captação &amp; edição</span></figcaption>
+          <figcaption><span class="t"><b>Casa em Interlagos</b></span><span class="m" data-i18n="s6.m">captação &amp; edição</span></figcaption>
         </figure>
         <figure class="video reveal">
           <div class="frame" data-vimeo="509209305">
             <img src="https://i.vimeocdn.com/video/1153918131-9aa85a319c55d699d23d28d0d69d7c34067ba69a8ec9c70482a1b4ecf19859b5-d_640?region=us" alt="Residência Artística na Vila Mariana" loading="lazy">
+            <video class="loop" muted loop playsinline preload="none" aria-hidden="true"><source src="9-v-loop9.mp4" type="video/mp4"></video>
             <div class="play"><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span></div>
           </div>
-          <figcaption><span class="t">Residência Artística — Vila Mariana</span><span class="m" data-i18n="s6.m">captação &amp; edição</span></figcaption>
+          <figcaption><span class="t"><b>Residência Artística</b> — Vila Mariana</span><span class="m" data-i18n="s6.m">captação &amp; edição</span></figcaption>
         </figure>
       </div>
     </div>
   </section>
   <section class="clients">
     <div class="wrap reveal">
-      <p class="label" data-i18n="clients.label">Quem já passou pela mesa</p>
+      <p class="label" data-i18n="clients.label">Quem já passou pela mesa de edição</p>
       <p class="sub" data-i18n="clients.sub">Canais, marcas, escolas e produtoras que já editaram, animaram e filmaram comigo.</p>
       <div class="client-grid">
         <div class="crow">
@@ -569,16 +609,16 @@ const I18N = {
     "hero.title":"Seu público compra de quem ele sente.<br><em>Eu edito essa sensação.</em>",
     "hero.sub":"Edição e motion design para canais, marcas e artistas. Da minha mesa de montagem saíram vídeos com <strong>mais de um milhão de views</strong>, vinhetas para o <strong>Bradesco Seguros</strong> e videoclipes autorais.",
     "hero.cta":"Chamar no WhatsApp","hero.cta2":"Ver trabalhos","hero.scroll":"Role",
-    "stats.1":"inscritos no canal que edito","stats.1s":"inscritos no canal","stats.2":"de views no vídeo mais assistido","stats.3":"vinhetas para Bradesco Seguros","stats.4":"na mesa de montagem desde então","stats.4s":"editando desde então",
-    "s1.desc":"Captação e edição para o maior canal de ecommerce do Brasil, com <strong>2,2 milhões de inscritos</strong>. Os vídeos mais vistos que editei passam de <strong>1,2 milhão de views</strong> cada.",
-    "views":"views","s1.num":"CENA 01","s2.num":"CENA 02","s3.num":"CENA 03","s4.num":"CENA 04","s5.num":"CENA 05","s6.num":"CENA 06",
+    "stats.1":"inscritos no canal que editei","stats.1s":"inscritos no canal","stats.2":"de views no vídeo mais assistido","stats.3":"vinhetas para Bradesco Seguros","stats.4":"na mesa de montagem desde então","stats.4s":"editando desde então",
+    "s1.desc":"Captação e edição para o maior canal de ecommerce do Brasil, hoje com <strong>2,2 milhões de inscritos</strong>. Os vídeos mais vistos que editei passam de <strong>1,2 milhão de views</strong> cada (total de cada vídeo).",
+    "views":"views no YouTube","views.t":"total do vídeo, não só do meu período","s1.num":"CENA 01","s2.num":"CENA 02","s3.num":"CENA 03","s4.num":"CENA 04","s5.num":"CENA 05","s6.num":"CENA 06",
     "s2.desc":"Vinhetas e animações para marcas e instituições: três peças para <strong>Bradesco Seguros</strong>, abertura para a <strong>FGV EMAp</strong> e campanha para o <strong>Colégio Batista</strong>.",
     "s2.m":"motion & animação",
     "s3.t":"Videoclipes","s3.desc":"Direção, captação e edição de clipes autorais com artistas independentes.","s3.m":"direção & edição",
     "s4.desc":"O corpo em movimento como roteiro: filmes de dança e fashion films dirigidos e editados por mim.","s4.m":"direção, captação & edição",
     "s5.t":"Corporativo & Eventos","s5.desc":"Cobertura e edição para eventos, campanhas e institucionais.","s5.m":"captação & edição",
     "s6.t":"Imobiliário","s6.desc":"Vídeos que <strong>vendem espaços</strong>: captação e edição para o mercado imobiliário.","s6.m":"captação & edição",
-    "clients.label":"Quem já passou pela mesa",
+    "clients.label":"Quem já passou pela mesa de edição",
     "clients.sub":"Canais, marcas, escolas e produtoras que já editaram, animaram e filmaram comigo.",
     "about.h2":"Editor de vídeo, motion designer e artesão de experiências audiovisuais.",
     "about.p1":"Moro em Paraty, entre a mata e o mar, e trabalho com clientes do Brasil inteiro. Venho do circo e das artes cênicas: foi lá que aprendi ritmo, tempo e presença — e é disso que um corte é feito. Até hoje é assim que eu <strong>perco a noção do tempo</strong>: ensinando, tocando música, dançando. É o mesmo estado que procuro em toda montagem.",
@@ -597,16 +637,16 @@ const I18N = {
     "hero.title":"Your audience buys from who they feel.<br><em>I edit that feeling.</em>",
     "hero.sub":"Editing and motion design for channels, brands and artists. My edit room has shipped videos with <strong>over a million views</strong>, network idents for <strong>Bradesco Seguros</strong> and independent music videos.",
     "hero.cta":"Message on WhatsApp","hero.cta2":"See the work","hero.scroll":"Scroll",
-    "stats.1":"subscribers on the channel I edit","stats.1s":"subscribers on the channel","stats.2":"views on the most-watched video","stats.3":"idents for Bradesco Seguros","stats.4":"in the edit room ever since","stats.4s":"editing ever since",
-    "s1.desc":"Filming and editing for Brazil's biggest ecommerce channel, with <strong>2.2 million subscribers</strong>. The most-watched videos I edited each passed <strong>1.2 million views</strong>.",
-    "views":"views",
+    "stats.1":"subscribers on the channel I edited","stats.1s":"subscribers on the channel","stats.2":"views on the most-watched video","stats.3":"idents for Bradesco Seguros","stats.4":"in the edit room ever since","stats.4s":"editing ever since",
+    "s1.desc":"Filming and editing for Brazil's biggest ecommerce channel, now with <strong>2.2 million subscribers</strong>. The most-watched videos I edited each passed <strong>1.2 million views</strong> (each video's total).",
+    "views":"views on YouTube","views.t":"total views of the video, not only during my time",
     "s2.desc":"Idents and animation for brands and institutions: three pieces for <strong>Bradesco Seguros</strong>, an opening for <strong>FGV EMAp</strong> and a campaign for <strong>Colégio Batista</strong>.",
     "s2.m":"motion & animation",
     "s3.t":"Music Videos","s3.desc":"Directing, filming and editing independent music videos.","s3.m":"directing & editing",
     "s4.desc":"The moving body as the script: dance films and fashion films I directed and edited.","s4.m":"directing, filming & editing",
     "s5.t":"Corporate & Events","s5.desc":"Coverage and editing for events, campaigns and institutional films.","s5.m":"filming & editing",
     "s6.t":"Real Estate","s6.desc":"Videos that <strong>sell spaces</strong>: filming and editing for the real estate market.","s6.m":"filming & editing",
-    "clients.label":"At the editing table",
+    "clients.label":"Who has been through the editing table",
     "clients.sub":"Channels, brands, schools and studios that have edited, animated and filmed with me.",
     "about.h2":"Video editor, motion designer and craftsman of audiovisual experiences.",
     "about.p1":"I live in Paraty, between the forest and the sea, and work with clients across Brazil and abroad. I come from the circus and the performing arts: that is where I learned rhythm, timing and presence — the raw material of every cut. It is still how I <strong>lose track of time</strong>: teaching, playing music, dancing. The same state I look for in every edit.",
@@ -625,16 +665,16 @@ const I18N = {
     "hero.title":"Tu público compra de quien siente.<br><em>Yo edito esa sensación.</em>",
     "hero.sub":"Edición y motion design para canales, marcas y artistas. De mi mesa de montaje salieron videos con <strong>más de un millón de vistas</strong>, vinhetas para <strong>Bradesco Seguros</strong> y videoclips autorales.",
     "hero.cta":"Escribir por WhatsApp","hero.cta2":"Ver trabajos","hero.scroll":"Desliza",
-    "stats.1":"suscriptores en el canal que edito","stats.1s":"suscriptores en el canal","stats.2":"de vistas en el video más visto","stats.3":"vinhetas para Bradesco Seguros","stats.4":"en la mesa de montaje desde entonces","stats.4s":"editando desde entonces",
-    "s1.desc":"Captación y edición para el mayor canal de ecommerce de Brasil, con <strong>2,2 millones de suscriptores</strong>. Los videos más vistos que edité superan <strong>1,2 millones de vistas</strong> cada uno.",
-    "views":"vistas",
+    "stats.1":"suscriptores en el canal que edité","stats.1s":"suscriptores en el canal","stats.2":"de vistas en el video más visto","stats.3":"vinhetas para Bradesco Seguros","stats.4":"en la mesa de montaje desde entonces","stats.4s":"editando desde entonces",
+    "s1.desc":"Captación y edición para el mayor canal de ecommerce de Brasil, hoy con <strong>2,2 millones de suscriptores</strong>. Los videos más vistos que edité superan <strong>1,2 millones de vistas</strong> cada uno (total de cada video).",
+    "views":"vistas en YouTube","views.t":"total del video, no solo de mi período",
     "s2.desc":"Vinhetas y animaciones para marcas e instituciones: tres piezas para <strong>Bradesco Seguros</strong>, apertura para <strong>FGV EMAp</strong> y campaña para <strong>Colégio Batista</strong>.",
     "s2.m":"motion & animación",
     "s3.t":"Videoclips","s3.desc":"Dirección, captación y edición de videoclips autorais con artistas independientes.","s3.m":"dirección & edición",
     "s4.desc":"El cuerpo en movimiento como guion: films de danza y fashion films dirigidos y editados por mí.","s4.m":"dirección, captación & edición",
     "s5.t":"Corporativo & Eventos","s5.desc":"Cobertura y edición para eventos, campañas e institucionales.","s5.m":"captación & edición",
     "s6.t":"Inmobiliario","s6.desc":"Videos que <strong>venden espacios</strong>: captación y edición para el mercado inmobiliario.","s6.m":"captación & edición",
-    "clients.label":"Quienes ya pasaron por la mesa",
+    "clients.label":"Quienes ya pasaron por la mesa de edición",
     "clients.sub":"Canales, marcas, escuelas y productoras que ya editaron, animaron y filmaron conmigo.",
     "about.h2":"Editor de video, motion designer y artesano de experiencias audiovisuales.",
     "about.p1":"Vivo en Paraty, entre la mata y el mar, y trabajo con clientes de todo Brasil y del exterior. Vengo del circo y de las artes escénicas: ahí aprendí ritmo, tiempo y presencia — la materia prima de cada corte. Hasta hoy es así que <strong>pierdo la noción del tiempo</strong>: enseñando, tocando música, bailando. El mismo estado que busco en cada montaje.",
@@ -786,5 +826,6 @@ var amp = reduced ? 0.4 : 1;
 })();
 })();
 </script>
-</body>
+<script>(function(){var L=document.querySelectorAll('.stats,.clients'),t=false;function chk(){t=false;var y=innerHeight*.5,l=false;L.forEach(function(e){var r=e.getBoundingClientRect();if(r.top<=y&&r.bottom>=y)l=true});document.documentElement.classList.toggle('edge-light',l)}
+addEventListener('scroll',function(){if(!t){t=true;requestAnimationFrame(chk)}},{passive:true});addEventListener('load',chk);chk()})()</script></body>
 </html>
