@@ -58,6 +58,12 @@ header{position:fixed;inset:0 0 auto 0;z-index:50;background:rgba(11,9,9,.86);ba
 .langs button:hover{color:var(--ink)}
 @media(max-width:720px){.nav-links{display:none}}
 .hero{min-height:calc(100svh - 44px);display:flex;flex-direction:column;justify-content:center;padding:6rem 0 4.5rem;position:relative}
+.hero-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.24;filter:saturate(.85) brightness(.6);z-index:0;pointer-events:none}
+.hero-bg-static{display:none}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(11,9,9,.78),rgba(11,9,9,.45) 40%,rgba(11,9,9,.85));z-index:0;pointer-events:none}
+.hero .wrap,.hero .scroll-cue{position:relative;z-index:2}
+.hero .scroll-cue{position:absolute}
+.hero-mark,.hero-scope{z-index:1}
 .kicker{font-family:var(--mono);font-size:.85rem;letter-spacing:.22em;text-transform:uppercase;color:var(--accent-hi);display:flex;align-items:center;gap:.9rem}
 .kicker::before{content:"";width:2.6rem;height:1px;background:var(--accent)}
 .hero h1{font-family:var(--sans);font-weight:600;font-size:clamp(2.7rem,7.2vw,5.8rem);line-height:1.05;letter-spacing:-.025em;margin:1.3rem 0 1.4rem;max-width:14ch;text-wrap:balance}
@@ -159,7 +165,7 @@ footer img{height:20px;width:auto;opacity:.8}
 .hud .tc{bottom:12px;right:36px;letter-spacing:.1em}
 @keyframes blink{50%{opacity:.12}}
 @media(max-width:720px){.hud .tc{display:none}}
-@media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none}.frame img,.btn{transition:none}.grain,.vig,.hud .rec i,.hero-scope{animation:none}.scroll-cue i::after{animation:none}.burn{display:none}video.hero-mark{display:none}.hero-mark-static{display:block}}
+@media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none}.frame img,.btn{transition:none}.grain,.vig,.hud .rec i,.hero-scope{animation:none}.scroll-cue i::after{animation:none}.burn{display:none}video.hero-mark{display:none}.hero-mark-static{display:block}video.hero-bg{display:none}.hero-bg-static{display:block}}
 
 .slate{width:1em;height:1em;vertical-align:-0.15em;margin-right:.55em;color:var(--accent);}
 .sec-head{position:relative;will-change:transform}.sec-head.reveal.in{transition-property:opacity}
@@ -203,6 +209,8 @@ video.hero-mark{mix-blend-mode:screen;opacity:.2}
 </header>
 <main id="top">
   <section class="hero">
+    <video class="hero-bg" autoplay muted loop playsinline preload="auto" poster="hero-bg.jpg" aria-hidden="true" tabindex="-1"><source src="hero-bg.mp4" type="video/mp4"></video>
+    <img class="hero-bg hero-bg-static" src="hero-bg.jpg" alt="" aria-hidden="true">
     <svg class="hero-scope" viewBox="0 0 100 100" fill="none" aria-hidden="true">
 <circle cx="50" cy="50" r="46" stroke="#8E2434" stroke-width="1"/>
 <circle cx="50" cy="50" r="34" stroke="#8E2434" stroke-width="0.5" opacity="0.5"/>
