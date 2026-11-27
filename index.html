@@ -84,7 +84,8 @@ header{position:fixed;inset:0 0 auto 0;z-index:50;background:rgba(11,9,9,.86);ba
 .stat:first-child{border-left:none;padding-left:0}
 .stat b{display:block;font-family:var(--serif);font-weight:400;font-size:clamp(1.9rem,3.4vw,2.9rem);line-height:1;color:var(--accent)}
 .stat span{display:block;margin-top:.7rem;font-family:var(--mono);font-weight:500;font-size:.88rem;letter-spacing:.09em;text-transform:uppercase;color:rgba(22,20,18,.88)}
-@media(max-width:720px){.stats .wrap{grid-template-columns:1fr 1fr}.stat{padding:1.6rem 1rem}.stat:nth-child(odd){border-left:none;padding-left:0}}
+.stat .s{display:none}
+@media(max-width:720px){.stats .wrap{grid-template-columns:1fr;gap:.4rem 0}.stat{padding:1.4rem 0}.stat:nth-child(odd){border-left:none;padding-left:0}.stat .f{display:none}.stat .s{display:block}}
 section.work{padding:6.5rem 0 3rem}
 section.work,section.about{position:relative;overflow:hidden}
 section.work::before,section.about::before{content:"";position:absolute;inset:0;pointer-events:none;opacity:.06;z-index:0;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
@@ -175,7 +176,7 @@ video.hero-mark{mix-blend-mode:screen;opacity:.2}
 .hero-scope{position:absolute;right:5%;bottom:8%;width:300px;opacity:.15;pointer-events:none;animation:scopeSpin 46s linear infinite}
 @keyframes scopeSpin{to{transform:rotate(360deg)}}
 .parade{position:absolute;right:0;top:0;width:360px;opacity:.15;pointer-events:none}
-@media(max-width:720px){.parade,.hero-scope{display:none}.hero{padding-bottom:8rem}.hero .cta-row{margin-bottom:1.2rem}}
+@media(max-width:720px){.parade,.hero-scope{display:none}.hero{padding-bottom:8rem}.hero .cta-row{margin-bottom:1.2rem}.kicker{font-size:.78rem;letter-spacing:.18em}.kicker::before{display:none}.kicker .kb{display:block;margin-top:.45rem}}
 .burn{position:fixed;inset:0;z-index:90;pointer-events:none;opacity:0;mix-blend-mode:screen;background:radial-gradient(ellipse 90% 70% at 28% 38%,rgba(255,176,64,.75),rgba(214,92,26,.5) 42%,rgba(120,30,8,.28) 62%,rgba(0,0,0,0) 78%)}
 .burn.go{animation:burnFlash 3s ease-out .25s forwards}
 @keyframes burnFlash{0%{opacity:0;transform:scale(1.07)}14%{opacity:.95}55%{opacity:.5}100%{opacity:0;transform:scale(1)}}
@@ -222,7 +223,7 @@ video.hero-mark{mix-blend-mode:screen;opacity:.2}
     <video class="hero-mark" autoplay muted playsinline preload="metadata" poster="logo-anim-poster.png" aria-hidden="true" tabindex="-1"><source src="logo-anim.mp4" type="video/mp4"></video>
     <img class="hero-mark hero-mark-static" src="mark-white.png" alt="" aria-hidden="true">
     <div class="wrap">
-      <p class="kicker" data-i18n="hero.kicker">Editor de Vídeo &amp; Motion Designer — Paraty, Brasil</p>
+      <p class="kicker" data-i18n-html="hero.kicker">Editor de Vídeo &amp; Motion Designer <span class="kb">— Paraty, Brasil</span></p>
       <h1 data-i18n-html="hero.title">Seu público compra de quem ele sente.<br><em>Eu edito essa sensação.</em></h1>
       <p data-i18n-html="hero.sub">Edição e motion design para canais, marcas e artistas. Da minha mesa de montagem saíram vídeos com mais de um milhão de views, vinhetas para o Bradesco Seguros e videoclipes autorais.</p>
       <div class="cta-row">
@@ -237,9 +238,9 @@ video.hero-mark{mix-blend-mode:screen;opacity:.2}
   </section>
   <section class="stats" aria-label="Números">
     <div class="wrap">
-      <div class="stat reveal"><b>2,2 mi+</b><span data-i18n="stats.1">inscritos no canal que edito</span></div>
+      <div class="stat reveal"><b>2,2 mi+</b><span class="f" data-i18n="stats.1">inscritos no canal que edito</span><span class="s" data-i18n="stats.1s">inscritos no canal</span></div>
       <div class="stat reveal"><b>1,49 mi</b><span data-i18n="stats.2">de views no vídeo mais assistido</span></div>
-      <div class="stat reveal"><b>2011</b><span data-i18n="stats.4">na mesa de montagem desde então</span></div>
+      <div class="stat reveal"><b>2011</b><span class="f" data-i18n="stats.4">na mesa de montagem desde então</span><span class="s" data-i18n="stats.4s">editando desde então</span></div>
     </div>
   </section>
   <div id="trabalhos"></div>
@@ -517,11 +518,11 @@ video.hero-mark{mix-blend-mode:screen;opacity:.2}
 const I18N = {
   pt: {
     "nav.work":"Trabalhos","nav.about":"Sobre","nav.contact":"Contato",
-    "hero.kicker":"Editor de Vídeo & Motion Designer — Paraty, Brasil",
+    "hero.kicker":"Editor de Vídeo & Motion Designer <span class='kb'>— Paraty, Brasil</span>",
     "hero.title":"Seu público compra de quem ele sente.<br><em>Eu edito essa sensação.</em>",
     "hero.sub":"Edição e motion design para canais, marcas e artistas. Da minha mesa de montagem saíram vídeos com <strong>mais de um milhão de views</strong>, vinhetas para o <strong>Bradesco Seguros</strong> e videoclipes autorais.",
     "hero.cta":"Chamar no WhatsApp","hero.cta2":"Ver trabalhos","hero.scroll":"Role",
-    "stats.1":"inscritos no canal que edito","stats.2":"de views no vídeo mais assistido","stats.3":"vinhetas para Bradesco Seguros","stats.4":"na mesa de montagem desde então",
+    "stats.1":"inscritos no canal que edito","stats.1s":"inscritos no canal","stats.2":"de views no vídeo mais assistido","stats.3":"vinhetas para Bradesco Seguros","stats.4":"na mesa de montagem desde então","stats.4s":"editando desde então",
     "s1.desc":"Captação e edição para o maior canal de ecommerce do Brasil, com <strong>2,2 milhões de inscritos</strong>. Os vídeos mais vistos que editei passam de <strong>1,2 milhão de views</strong> cada.",
     "views":"views","s1.num":"CENA 01","s2.num":"CENA 02","s3.num":"CENA 03","s4.num":"CENA 04","s5.num":"CENA 05","s6.num":"CENA 06",
     "s2.desc":"Vinhetas e animações para marcas e instituições: três peças para Bradesco Seguros, abertura para a FGV EMAp e campanha para o Colégio Batista.",
@@ -544,11 +545,11 @@ const I18N = {
   },
   en: {
     "nav.work":"Work","nav.about":"About","nav.contact":"Contact",
-    "hero.kicker":"Video Editor & Motion Designer — Paraty, Brazil",
+    "hero.kicker":"Video Editor & Motion Designer <span class='kb'>— Paraty, Brazil</span>",
     "hero.title":"Your audience buys from who they feel.<br><em>I edit that feeling.</em>",
     "hero.sub":"Editing and motion design for channels, brands and artists. My edit room has shipped videos with <strong>over a million views</strong>, network idents for <strong>Bradesco Seguros</strong> and independent music videos.",
     "hero.cta":"Message on WhatsApp","hero.cta2":"See the work","hero.scroll":"Scroll",
-    "stats.1":"subscribers on the channel I edit","stats.2":"views on the most-watched video","stats.3":"idents for Bradesco Seguros","stats.4":"in the edit room ever since",
+    "stats.1":"subscribers on the channel I edit","stats.1s":"subscribers on the channel","stats.2":"views on the most-watched video","stats.3":"idents for Bradesco Seguros","stats.4":"in the edit room ever since","stats.4s":"editing ever since",
     "s1.desc":"Filming and editing for Brazil's biggest ecommerce channel, with <strong>2.2 million subscribers</strong>. The most-watched videos I edited each passed <strong>1.2 million views</strong>.",
     "views":"views",
     "s2.desc":"Idents and animation for brands and institutions: three pieces for Bradesco Seguros, an opening for FGV EMAp and a campaign for Colégio Batista.",
@@ -571,11 +572,11 @@ const I18N = {
   },
   es: {
     "nav.work":"Trabajos","nav.about":"Sobre mí","nav.contact":"Contacto",
-    "hero.kicker":"Editor de Video & Motion Designer — Paraty, Brasil",
+    "hero.kicker":"Editor de Video & Motion Designer <span class='kb'>— Paraty, Brasil</span>",
     "hero.title":"Tu público compra de quien siente.<br><em>Yo edito esa sensación.</em>",
     "hero.sub":"Edición y motion design para canales, marcas y artistas. De mi mesa de montaje salieron videos con <strong>más de un millón de vistas</strong>, vinhetas para <strong>Bradesco Seguros</strong> y videoclips autorales.",
     "hero.cta":"Escribir por WhatsApp","hero.cta2":"Ver trabajos","hero.scroll":"Desliza",
-    "stats.1":"suscriptores en el canal que edito","stats.2":"de vistas en el video más visto","stats.3":"vinhetas para Bradesco Seguros","stats.4":"en la mesa de montaje desde entonces",
+    "stats.1":"suscriptores en el canal que edito","stats.1s":"suscriptores en el canal","stats.2":"de vistas en el video más visto","stats.3":"vinhetas para Bradesco Seguros","stats.4":"en la mesa de montaje desde entonces","stats.4s":"editando desde entonces",
     "s1.desc":"Captación y edición para el mayor canal de ecommerce de Brasil, con <strong>2,2 millones de suscriptores</strong>. Los videos más vistos que edité superan <strong>1,2 millones de vistas</strong> cada uno.",
     "views":"vistas",
     "s2.desc":"Vinhetas y animaciones para marcas e instituciones: tres piezas para Bradesco Seguros, apertura para FGV EMAp y campaña para Colégio Batista.",
