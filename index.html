@@ -58,9 +58,9 @@ header{position:fixed;inset:0 0 auto 0;z-index:50;background:rgba(11,9,9,.86);ba
 .langs button:hover{color:var(--ink)}
 @media(max-width:720px){.nav-links{display:none}}
 .hero{min-height:calc(100svh - 44px);display:flex;flex-direction:column;justify-content:center;padding:6rem 0 4.5rem;position:relative}
-.hero-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.24;filter:saturate(.85) brightness(.6);z-index:0;pointer-events:none}
+.hero-bg{position:absolute;left:0;right:0;top:-64px;bottom:0;width:100%;height:auto;object-fit:cover;opacity:.24;filter:saturate(.85) brightness(.6);z-index:0;pointer-events:none}
 .hero-bg-static{display:none}
-.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(11,9,9,.78),rgba(11,9,9,.45) 40%,rgba(11,9,9,.85));z-index:0;pointer-events:none}
+.hero::after{content:"";position:absolute;left:0;right:0;top:-64px;bottom:0;background:linear-gradient(180deg,rgba(11,9,9,.78),rgba(11,9,9,.45) 40%,rgba(11,9,9,.85));z-index:0;pointer-events:none}
 .hero .wrap,.hero .scroll-cue{position:relative;z-index:2}
 .hero .scroll-cue{position:absolute}
 .hero-mark,.hero-scope{z-index:1}
@@ -175,7 +175,7 @@ video.hero-mark{mix-blend-mode:screen;opacity:.2}
 .hero-scope{position:absolute;right:5%;bottom:8%;width:300px;opacity:.15;pointer-events:none;animation:scopeSpin 46s linear infinite}
 @keyframes scopeSpin{to{transform:rotate(360deg)}}
 .parade{position:absolute;right:0;top:0;width:360px;opacity:.15;pointer-events:none}
-@media(max-width:720px){.parade,.hero-scope{display:none}.hero{padding-bottom:6.5rem}.hero .cta-row{margin-bottom:1.2rem}}
+@media(max-width:720px){.parade,.hero-scope{display:none}.hero{padding-bottom:8rem}.hero .cta-row{margin-bottom:1.2rem}}
 .burn{position:fixed;inset:0;z-index:90;pointer-events:none;opacity:0;mix-blend-mode:screen;background:radial-gradient(ellipse 90% 70% at 28% 38%,rgba(255,176,64,.75),rgba(214,92,26,.5) 42%,rgba(120,30,8,.28) 62%,rgba(0,0,0,0) 78%)}
 .burn.go{animation:burnFlash 3s ease-out .25s forwards}
 @keyframes burnFlash{0%{opacity:0;transform:scale(1.07)}14%{opacity:.95}55%{opacity:.5}100%{opacity:0;transform:scale(1)}}
