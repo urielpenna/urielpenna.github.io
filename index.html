@@ -668,12 +668,12 @@ if (!reduced){
     var p = h.scrollTop / Math.max(1, h.scrollHeight - h.clientHeight);
     if (bar) bar.style.width = (p*100).toFixed(2) + '%';
     if (mark) mark.style.transform = 'translateY(calc(-50% + ' + (h.scrollTop*0.26) + 'px))';
+    var vh = h.clientHeight;
     parades.forEach(function(el){
       var pr = el.getBoundingClientRect();
       var poff = (pr.top + pr.height/2 - vh/2) * 0.22;
       el.style.transform = 'translateY(' + poff.toFixed(1) + 'px)';
     });
-    var vh = h.clientHeight;
     heads.forEach(function(el){
       var r = el.getBoundingClientRect();
       var off = (r.top + r.height/2 - vh/2) * -0.14;
