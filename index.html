@@ -146,6 +146,8 @@ section.about{padding:7rem 0}
 .contact{padding:8rem 0;text-align:left}
 .contact h2{font-family:var(--sans);font-weight:600;font-size:clamp(2.6rem,7vw,5.2rem);line-height:1.08;letter-spacing:-.025em;max-width:16ch;text-wrap:balance}
 .contact h2 em{font-family:var(--serif);font-style:italic;font-weight:400;letter-spacing:-.01em;color:var(--accent-hi)}
+.contact .sign{margin-top:2.8rem;font-family:var(--serif);font-style:italic;font-weight:400;font-size:1.55rem;color:var(--text);letter-spacing:-.01em}
+.contact .sign b{font-weight:400;color:var(--accent-hi)}
 .contact p{color:var(--muted);margin:1.6rem 0 2.4rem;max-width:48ch;font-size:1.13rem;text-wrap:pretty}
 .soc{margin-top:3.5rem;display:flex;flex-wrap:wrap;gap:2rem;font-family:var(--mono);font-size:.8rem;letter-spacing:.12em;text-transform:uppercase}
 .soc a{color:var(--muted);border-bottom:1px solid var(--line);padding-bottom:.25rem;transition:color .2s,border-color .2s}
@@ -229,7 +231,7 @@ footer img{height:20px;width:auto;opacity:.8}
 <circle cx="50" cy="50" r="4" stroke="#C85A70" stroke-width="0.8"/>
 </svg>
     <div class="wrap">
-      <p class="kicker" data-i18n-html="hero.kicker">Editor de Vídeo &amp; Motion Designer <span class="kb">— Paraty, Brasil</span></p>
+      <p class="kicker" data-i18n-html="hero.kicker">Editor de Vídeo &amp; Motion Designer <span class="kb">Paraty, Brasil</span></p>
       <h1 data-i18n-html="hero.title">Seu público compra de quem ele sente.<br><em>Eu edito essa sensação.</em></h1>
       <p data-i18n-html="hero.sub">Edição e motion design para canais, marcas e artistas. Da minha mesa de montagem saíram vídeos com mais de um milhão de views, vinhetas para o Bradesco Seguros e videoclipes autorais.</p>
       <div class="cta-row">
@@ -516,6 +518,7 @@ footer img{height:20px;width:auto;opacity:.8}
         <a href="https://instagram.com/urielpenna" target="_blank" rel="noopener">Instagram</a>
         <a href="https://linkedin.com/in/urielpenna" target="_blank" rel="noopener">LinkedIn</a>
       </div>
+      <p class="sign" data-i18n-html="contact.sign"><b>Uriel Penna</b> · editor &amp; motion designer</p>
     </div>
   </section>
 </main>
@@ -530,7 +533,7 @@ footer img{height:20px;width:auto;opacity:.8}
 const I18N = {
   pt: {
     "nav.work":"Trabalhos","nav.about":"Sobre","nav.contact":"Contato",
-    "hero.kicker":"Editor de Vídeo & Motion Designer <span class='kb'>— Paraty, Brasil</span>",
+    "hero.kicker":"Editor de Vídeo & Motion Designer <span class='kb'>Paraty, Brasil</span>",
     "hero.title":"Seu público compra de quem ele sente.<br><em>Eu edito essa sensação.</em>",
     "hero.sub":"Edição e motion design para canais, marcas e artistas. Da minha mesa de montagem saíram vídeos com <strong>mais de um milhão de views</strong>, vinhetas para o <strong>Bradesco Seguros</strong> e videoclipes autorais.",
     "hero.cta":"Chamar no WhatsApp","hero.cta2":"Ver trabalhos","hero.scroll":"Role",
@@ -553,11 +556,12 @@ const I18N = {
     "contact.h2":"Tem um projeto <em>na mesa?</em>",
     "contact.p":"Me conta o que você precisa editar, animar ou filmar. Respondo no WhatsApp, sem formulário e sem intermediário.",
     "contact.cta":"Chamar no WhatsApp",
+    "contact.sign":"<b>Uriel Penna</b> · editor & motion designer",
     "footer.1":"© 2026 Uriel Penna — Paraty, Brasil","footer.2":"Feito à mão, frame a frame."
   },
   en: {
     "nav.work":"Work","nav.about":"About","nav.contact":"Contact",
-    "hero.kicker":"Video Editor & Motion Designer <span class='kb'>— Paraty, Brazil</span>",
+    "hero.kicker":"Video Editor & Motion Designer <span class='kb'>Paraty, Brazil</span>",
     "hero.title":"Your audience buys from who they feel.<br><em>I edit that feeling.</em>",
     "hero.sub":"Editing and motion design for channels, brands and artists. My edit room has shipped videos with <strong>over a million views</strong>, network idents for <strong>Bradesco Seguros</strong> and independent music videos.",
     "hero.cta":"Message on WhatsApp","hero.cta2":"See the work","hero.scroll":"Scroll",
@@ -580,11 +584,12 @@ const I18N = {
     "contact.h2":"Got a project <em>on the table?</em>",
     "contact.p":"Tell me what you need edited, animated or filmed. I answer on WhatsApp — no forms, no middlemen.",
     "contact.cta":"Message on WhatsApp",
+    "contact.sign":"<b>Uriel Penna</b> · video editor & motion designer",
     "footer.1":"© 2026 Uriel Penna — Paraty, Brazil","footer.2":"Handmade, frame by frame."
   },
   es: {
     "nav.work":"Trabajos","nav.about":"Sobre mí","nav.contact":"Contacto",
-    "hero.kicker":"Editor de Video & Motion Designer <span class='kb'>— Paraty, Brasil</span>",
+    "hero.kicker":"Editor de Video & Motion Designer <span class='kb'>Paraty, Brasil</span>",
     "hero.title":"Tu público compra de quien siente.<br><em>Yo edito esa sensación.</em>",
     "hero.sub":"Edición y motion design para canales, marcas y artistas. De mi mesa de montaje salieron videos con <strong>más de un millón de vistas</strong>, vinhetas para <strong>Bradesco Seguros</strong> y videoclips autorales.",
     "hero.cta":"Escribir por WhatsApp","hero.cta2":"Ver trabajos","hero.scroll":"Desliza",
@@ -607,6 +612,7 @@ const I18N = {
     "contact.h2":"¿Tienes un proyecto <em>en la mesa?</em>",
     "contact.p":"Cuéntame qué necesitas editar, animar o filmar. Respondo por WhatsApp, sin formularios ni intermediarios.",
     "contact.cta":"Escribir por WhatsApp",
+    "contact.sign":"<b>Uriel Penna</b> · editor & motion designer",
     "footer.1":"© 2026 Uriel Penna — Paraty, Brasil","footer.2":"Hecho a mano, frame a frame."
   }
 };
