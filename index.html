@@ -71,13 +71,13 @@ header{position:fixed;inset:0 0 auto 0;z-index:50;background:rgba(11,9,9,.86);ba
 .hero .wrap,.hero .scroll-cue{position:relative;z-index:2}
 .hero .scroll-cue{position:absolute}
 .hero-scope{z-index:1}
-.kicker{font-family:var(--mono);font-size:.85rem;letter-spacing:.22em;text-transform:uppercase;color:var(--accent-hi);display:block;max-width:none;white-space:nowrap}
+.hero .kicker{font-family:var(--mono);font-size:.85rem;letter-spacing:.22em;text-transform:uppercase;color:var(--accent-hi);display:block;max-width:none;white-space:nowrap}
 .kicker .kb{display:block;margin:.5rem 0 0 calc(2.6rem + .9rem);font-size:.72rem;letter-spacing:.24em;opacity:.85}
 .kicker::before{content:"";display:inline-block;width:2.6rem;height:1px;background:var(--accent);vertical-align:middle;margin-right:.9rem}
 .hero h1{font-family:var(--sans);font-weight:600;font-size:clamp(2.7rem,7.2vw,5.8rem);line-height:1.05;letter-spacing:-.025em;margin:1.3rem 0 1.4rem;max-width:14ch;text-wrap:balance}
 .hero h1 em{font-family:var(--serif);font-style:italic;font-weight:400;letter-spacing:-.01em;color:var(--accent-hi)}
 .hero p{max-width:46ch;color:var(--muted);font-size:1.12rem;text-wrap:pretty}
-@media (max-height:840px) and (min-width:721px){.hero{padding:2.6rem 0 3.8rem}.hero h1{font-size:clamp(2.4rem,5.4vw,4.2rem);margin:1.3rem 0 1.4rem;max-width:20ch}.hero p{font-size:1.02rem;max-width:54ch}.cta-row{margin-top:2.1rem}.btn{padding:.85rem 1.7rem}.btn.ghost{padding:.8rem 1.5rem}.kicker{font-size:.78rem}.scroll-cue{bottom:.7rem}.scroll-cue i{height:24px}.hero-scope{display:none}}
+@media (max-height:840px) and (min-width:721px){.hero{padding:2.6rem 0 3.8rem}.hero h1{font-size:clamp(2.4rem,5.4vw,4.2rem);margin:1.3rem 0 1.4rem;max-width:20ch}.hero p{font-size:1.02rem;max-width:54ch}.cta-row{margin-top:2.1rem}.btn{padding:.85rem 1.7rem}.btn.ghost{padding:.8rem 1.5rem}.hero .kicker{font-size:.78rem}.scroll-cue{bottom:.7rem}.scroll-cue i{height:24px}.hero-scope{display:none}}
 .cta-row{display:flex;flex-wrap:wrap;gap:1rem;margin-top:2.1rem}
 .btn{display:inline-flex;align-items:center;gap:.7rem;font-family:var(--sans);font-weight:600;font-size:1.02rem;letter-spacing:.01em;padding:1.05rem 2rem;border-radius:999px;border:1px solid var(--accent);background:var(--accent);color:#F2EFE8;transition:background .2s,border-color .2s,color .2s,transform .2s}
 .btn:hover{background:var(--accent-hi);border-color:var(--accent-hi);color:#161412;transform:translateY(-2px)}
@@ -187,7 +187,7 @@ footer img{height:20px;width:auto;opacity:.8}
 .hero-scope{position:absolute;right:5%;bottom:8%;width:300px;opacity:.15;pointer-events:none;animation:scopeSpin 46s linear infinite}
 @keyframes scopeSpin{to{transform:rotate(360deg)}}
 .parade{position:absolute;right:0;top:0;width:360px;opacity:.15;pointer-events:none}
-@media(max-width:720px){.parade,.hero-scope{display:none}.hero{padding-bottom:8rem}.hero .cta-row{margin-bottom:1.2rem}.kicker{font-size:.73rem;letter-spacing:.13em}.kicker .kb{font-size:.66rem;letter-spacing:.2em}}
+@media(max-width:720px){.parade,.hero-scope{display:none}.hero{padding-bottom:8rem}.hero .cta-row{margin-bottom:1.2rem}.hero .kicker{font-size:.73rem;letter-spacing:.13em}.kicker .kb{font-size:.66rem;letter-spacing:.2em}}
 .burn{position:fixed;inset:0;z-index:90;pointer-events:none;opacity:0;mix-blend-mode:screen;background:radial-gradient(ellipse 90% 70% at 28% 38%,rgba(255,176,64,.75),rgba(214,92,26,.5) 42%,rgba(120,30,8,.28) 62%,rgba(0,0,0,0) 78%)}
 .burn.go{animation:burnFlash 3s ease-out .25s forwards}
 @keyframes burnFlash{0%{opacity:0;transform:scale(1.07)}14%{opacity:.95}55%{opacity:.5}100%{opacity:0;transform:scale(1)}}
