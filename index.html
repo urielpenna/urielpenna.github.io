@@ -58,9 +58,9 @@ header{position:fixed;inset:0 0 auto 0;z-index:50;background:rgba(11,9,9,.86);ba
 .langs button:hover{color:var(--ink)}
 @media(max-width:720px){.nav-links{display:none}}
 .hero{min-height:calc(100svh - 44px);display:flex;flex-direction:column;justify-content:center;padding:6rem 0 4.5rem;position:relative}
-.hero-bg{position:absolute;left:0;right:0;top:-64px;bottom:0;width:100%;height:auto;object-fit:cover;opacity:.24;filter:saturate(.85) brightness(.6);z-index:0;pointer-events:none}
+.hero-bg{position:absolute;left:0;top:-64px;width:100%;height:calc(100% + 64px);object-fit:cover;opacity:.24;filter:saturate(.85) brightness(.6);z-index:0;pointer-events:none}
 .hero-bg-static{display:none}
-.hero::after{content:"";position:absolute;left:0;right:0;top:-64px;bottom:0;background:linear-gradient(180deg,rgba(11,9,9,.78),rgba(11,9,9,.45) 40%,rgba(11,9,9,.85));z-index:0;pointer-events:none}
+.hero::after{content:"";position:absolute;left:0;top:-64px;width:100%;height:calc(100% + 64px);background:linear-gradient(180deg,rgba(11,9,9,.78),rgba(11,9,9,.45) 40%,rgba(11,9,9,.85));z-index:0;pointer-events:none}
 .hero .wrap,.hero .scroll-cue{position:relative;z-index:2}
 .hero .scroll-cue{position:absolute}
 .hero-mark,.hero-scope{z-index:1}
