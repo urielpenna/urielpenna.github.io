@@ -19,7 +19,7 @@
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","name":"Uriel Penna","jobTitle":"Editor de Vídeo & Motion Designer","description":"Edição e motion design para canais, marcas e artistas.","address":{"@type":"PostalAddress","addressLocality":"Paraty","addressRegion":"RJ","addressCountry":"BR"},"url":"https://urielpenna.github.io/"}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,600&family=Archivo:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@1,9..144,400&family=Archivo:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
 :root{
   --bg:#0B0909;
@@ -79,6 +79,7 @@ video.hero-bg{transform:scale(1.4);transform-origin:50% 50%}
 .kicker .kb{display:block;margin:.5rem 0 0 calc(2.6rem + .9rem);font-size:.72rem;letter-spacing:.24em;opacity:.85}
 .kicker::before{content:"";display:inline-block;width:2.6rem;height:1px;background:var(--accent);vertical-align:middle;margin-right:.9rem}
 .hero h1{font-family:var(--sans);font-weight:600;font-size:clamp(2.7rem,7.2vw,5.8rem);line-height:1.05;letter-spacing:-.025em;margin:1.3rem 0 1.4rem;max-width:14ch;text-wrap:balance}
+.hero h1 br.hero-break-mobile{display:none}
 .hero h1 em{font-family:var(--serif);font-style:italic;font-weight:400;letter-spacing:-.01em;color:var(--accent-hi)}
 .hero p{max-width:46ch;color:var(--muted);font-size:1.12rem;text-wrap:pretty}
 @media (max-height:840px) and (min-width:721px){.hero{padding:2.6rem 0 3.8rem}.hero h1{font-size:clamp(2.4rem,5.4vw,4.2rem);margin:1.3rem 0 1.4rem;max-width:20ch}.hero p{font-size:1.02rem;max-width:54ch}.cta-row{margin-top:2.1rem}.btn{padding:.85rem 1.7rem}.btn.ghost{padding:.8rem 1.5rem}.hero .kicker{font-size:.78rem}.scroll-cue{bottom:.7rem}.scroll-cue i{height:24px}.hero-scope{display:none}}
@@ -241,6 +242,12 @@ section.work{counter-increment:fr}
 footer .wrap::before{content:"▸ FIM DO ROLO   ▸   5219   ▸   24 FPS";flex-basis:100%;font-size:.7rem;letter-spacing:.3em;color:var(--print);text-shadow:0 0 5px var(--printglow);opacity:.55;border-top:1px solid rgba(232,190,140,.18);padding-top:1rem}
 @media(max-width:720px){
 section .wrap,footer .wrap{width:calc(100% - 3.4rem);margin-left:1.25rem;margin-right:auto}
+.hero .wrap{width:calc(100% - 2.55rem)}
+.hero h1{max-width:none;font-size:clamp(1.05rem,6.1vw,2.7rem)}
+.hero h1 br.hero-break-mobile{display:block}
+.hero h1 br.hero-break-desktop{display:none}
+.hero h1 em{display:block}
+.hero h1 em::before{content:none}
 .hero{padding-right:0}
 .hero .hero-name{right:.4rem;top:76px;bottom:.8rem;font-size:.66rem;letter-spacing:.24em}
 .work .sec-head::before{font-size:.58rem;letter-spacing:.22em}
@@ -264,10 +271,13 @@ html[lang="es"] footer .wrap::before{content:"▸ FIN DEL ROLLO   ▸   5219   �
 .frame:hover{box-shadow:0 0 0 1px rgba(214,92,48,.55),0 0 14px 1px rgba(214,92,48,.28),0 0 46px 6px rgba(142,36,52,.30)}
 /* H3: bordas queimadas nas seções bege (sempre ligada) */
 .stats,.clients{position:relative;box-shadow:inset 0 22px 36px -18px rgba(142,36,52,.55),inset 0 -22px 36px -18px rgba(176,66,36,.5),inset 0 2px 0 rgba(160,50,40,.8),inset 0 -2px 0 rgba(160,50,40,.8)}
-</style><link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+</style><link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=EB+Garamond:ital,wght@1,400&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 <style>:root{--serif:"DM Serif Display",Georgia,serif;--sans:"Instrument Sans",system-ui,sans-serif}
 .hero h1,.sec-title,.about h2,.contact h2{font-family:"DM Serif Display",serif!important;font-weight:400!important;letter-spacing:-.01em!important}
-.hero h1 em,.contact h2 em{font-family:"DM Serif Display",serif!important;font-style:italic;font-weight:400!important}</style>
+.hero h1 em,.contact h2 em{font-family:"EB Garamond",Georgia,serif!important;font-style:italic;font-weight:400!important;font-size:1.22em;line-height:1}
+@media(min-width:721px){.hero h1 em{white-space:nowrap}}
+@media(max-width:720px){.hero h1 em,.contact h2 em{font-size:1.3em!important}}
+@media(min-width:721px){.hero h1{max-width:none}.hero h1 br.hero-break-mobile{display:block}.hero h1 br.hero-break-desktop{display:block}}</style>
 <style>.reel{padding:clamp(3.5rem,8vw,6rem) 0 clamp(2.5rem,6vw,4.5rem);background:var(--bg)}.reel-head{margin-bottom:1.8rem}.reel-fig{margin:0;max-width:960px}.reel-fig video{display:block;width:100%;aspect-ratio:16/9;background:#000;border-radius:10px;border:1px solid var(--line)}.reel-fig figcaption{margin-top:.8rem;justify-content:flex-start}.reel-fig figcaption .m{white-space:normal}</style>
 <style>
 /* === conversao: menu mobile, CTA flutuante, servicos, processo, FAQ === */
@@ -278,7 +288,8 @@ html[lang="es"] footer .wrap::before{content:"▸ FIN DEL ROLLO   ▸   5219   �
   .nav-links.open{opacity:1;transform:none;pointer-events:auto}
   .nav-links a{padding:.9rem .2rem;border-bottom:1px solid var(--line);font-size:.85rem;color:var(--ink)}
 }
-.wa-float{display:none;position:fixed;right:16px;bottom:16px;z-index:60;align-items:center;gap:.55rem;background:var(--accent);color:var(--ink);border-radius:999px;padding:.85rem 1.15rem;font-family:var(--mono);font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;box-shadow:0 10px 30px rgba(0,0,0,.5);border:1px solid rgba(242,239,232,.18)}
+.wa-float{display:flex;position:fixed;right:16px;bottom:16px;z-index:60;align-items:center;gap:.55rem;background:var(--accent);color:var(--ink);border-radius:999px;padding:.85rem 1.15rem;font-family:var(--mono);font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;box-shadow:0 10px 30px rgba(0,0,0,.5);border:1px solid rgba(242,239,232,.18);opacity:1;visibility:visible;transform:translateY(0);transition:opacity .25s ease,transform .25s ease,visibility .25s ease}
+.wa-float.is-hidden{opacity:0;visibility:hidden;pointer-events:none;transform:translateY(8px)}
 .wa-float svg{width:20px;height:20px;fill:currentColor}
 @media(max-width:720px){.wa-float{display:inline-flex}}
 .services{padding:clamp(3.5rem,8vw,6rem) 0;background:var(--bg)}
@@ -351,7 +362,7 @@ html[lang="es"] footer .wrap::before{content:"▸ FIN DEL ROLLO   ▸   5219   �
     <div class="wrap">
       <p class="hero-name">Uriel Penna</p>
       <p class="kicker" data-i18n-html="hero.kicker">Editor de Vídeo &amp; Motion Designer <span class="kb">Paraty, Brasil</span></p>
-      <h1 data-i18n-html="hero.title">Seu público compra de quem ele sente.<br><em>Eu edito essa sensação.</em></h1>
+      <h1 data-i18n-html="hero.title">Seu público compra <br class="hero-break-mobile">de quem ele sente.<br class="hero-break-desktop"><em>Eu edito essa sensação.</em></h1>
       <p data-i18n-html="hero.sub">Edição e motion design para canais, marcas e artistas. Da minha mesa de montagem saíram vídeos com mais de um milhão de views, vinhetas para o Bradesco Seguros e videoclipes autorais.</p>
       <div class="cta-row">
         <a class="btn" data-wa="hero" href="https://wa.me/5511953124277" target="_blank" rel="noopener">
@@ -795,7 +806,7 @@ html[lang="es"] footer .wrap::before{content:"▸ FIN DEL ROLLO   ▸   5219   �
       <p class="sign" data-i18n-html="contact.sign"><b>Uriel Penna</b><span class="dot"> · </span>editor &amp; motion designer</p>
     </div>
   </section>
-<a class="wa-float" data-wa="gen" href="https://wa.me/5511953124277" target="_blank" rel="noopener" aria-label="Chamar no WhatsApp">
+<a class="wa-float is-hidden" data-wa="gen" href="https://wa.me/5511953124277" target="_blank" rel="noopener" aria-label="Chamar no WhatsApp">
   <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22c5.46 0 9.91-4.45 9.91-9.91C21.95 6.45 17.5 2 12.04 2zm0 18.03a8.1 8.1 0 0 1-4.13-1.13l-.3-.18-3.07.81.82-3-.2-.31a8.06 8.06 0 0 1-1.24-4.31c0-4.47 3.64-8.1 8.12-8.1a8.07 8.07 0 0 1 8.1 8.1c0 4.48-3.64 8.12-8.1 8.12zm4.45-6.07c-.24-.12-1.44-.71-1.66-.79-.22-.08-.39-.12-.55.12-.16.24-.63.79-.77.95-.14.16-.28.18-.53.06-.24-.12-1.03-.38-1.96-1.21-.72-.65-1.21-1.44-1.36-1.68-.14-.24-.01-.37.11-.5.11-.11.24-.28.37-.42.12-.14.16-.24.24-.4.08-.16.04-.31-.02-.43-.06-.12-.55-1.32-.75-1.81-.2-.48-.4-.41-.55-.42h-.47c-.16 0-.43.06-.65.31-.22.24-.86.84-.86 2.05 0 1.21.88 2.37 1 2.53.12.16 1.72 2.63 4.18 3.69.58.25 1.04.4 1.4.52.59.19 1.12.16 1.54.1.47-.07 1.44-.59 1.64-1.16.2-.57.2-1.05.14-1.16-.06-.1-.22-.16-.46-.28z"/></svg>
   <span data-i18n="float.cta">Orçar projeto</span>
 </a>
@@ -882,7 +893,7 @@ const I18N = {
     "float.cta":"Orçar projeto",
 
     "hero.kicker":"Editor de Vídeo & Motion Designer <span class='kb'>Paraty, Brasil</span>",
-    "hero.title":"Seu público compra de quem ele sente.<br><em>Eu edito essa sensação.</em>",
+    "hero.title":"Seu público compra <br class='hero-break-mobile'>de quem ele sente.<br class='hero-break-desktop'><em>Eu edito essa sensação.</em>",
     "hero.sub":"Edição e motion design para canais, marcas e artistas. Da minha mesa de montagem saíram vídeos com <strong>mais de um milhão de views</strong>, vinhetas para o <strong>Bradesco Seguros</strong> e videoclipes autorais.",
     "hero.cta":"Chamar no WhatsApp","hero.cta2":"Ver trabalhos","hero.scroll":"Role","ig.m":"reel no Instagram","reel.k":"Showreel","reel.t":"Vários trabalhos, um corte só.","reel.c":"Música: “Rollin at 5”, Kevin MacLeod (incompetech.com), licenciada sob <a href=\"https://creativecommons.org/licenses/by/4.0/\" target=\"_blank\" rel=\"noopener\">CC BY 4.0</a>. Trecho editado para o reel.",
     "stats.1":"inscritos no canal que editei","stats.1s":"inscritos no canal","stats.2":"de views no vídeo mais assistido","stats.3":"vinhetas para Bradesco Seguros","stats.4":"na mesa de montagem desde então","stats.4s":"editando desde então",
@@ -931,7 +942,7 @@ const I18N = {
     "float.cta":"Quote a project",
 
     "hero.kicker":"Video Editor & Motion Designer <span class='kb'>Paraty, Brazil</span>",
-    "hero.title":"Your audience buys from who they feel.<br><em>I edit that feeling.</em>",
+    "hero.title":"Your audience buys <br class='hero-break-mobile'>from who they feel.<br class='hero-break-desktop'><em>I edit that feeling.</em>",
     "hero.sub":"Editing and motion design for channels, brands and artists. My edit room has shipped videos with <strong>over a million views</strong>, network idents for <strong>Bradesco Seguros</strong> and independent music videos.",
     "hero.cta":"Message on WhatsApp","hero.cta2":"See the work","hero.scroll":"Scroll","ig.m":"Instagram reel","reel.k":"Showreel","reel.t":"A lot of work, one cut.","reel.c":"Music: “Rollin at 5” by Kevin MacLeod (incompetech.com), licensed under <a href=\"https://creativecommons.org/licenses/by/4.0/\" target=\"_blank\" rel=\"noopener\">CC BY 4.0</a>. Edited excerpt for the reel.",
     "stats.1":"subscribers on the channel I edited","stats.1s":"subscribers on the channel","stats.2":"views on the most-watched video","stats.3":"idents for Bradesco Seguros","stats.4":"in the edit room ever since","stats.4s":"editing ever since",
@@ -980,7 +991,7 @@ const I18N = {
     "float.cta":"Cotizar proyecto",
 
     "hero.kicker":"Editor de Video & Motion Designer <span class='kb'>Paraty, Brasil</span>",
-    "hero.title":"Tu público compra de quien siente.<br><em>Yo edito esa sensación.</em>",
+    "hero.title":"Tu público compra <br class='hero-break-mobile'>de quien siente.<br class='hero-break-desktop'><em>Yo edito esa sensación.</em>",
     "hero.sub":"Edición y motion design para canales, marcas y artistas. De mi mesa de montaje salieron videos con <strong>más de un millón de vistas</strong>, vinhetas para <strong>Bradesco Seguros</strong> y videoclips autorales.",
     "hero.cta":"Escribir por WhatsApp","hero.cta2":"Ver trabajos","hero.scroll":"Desliza","ig.m":"reel en Instagram","reel.k":"Showreel","reel.t":"Varios trabajos, un solo corte.","reel.c":"Música: “Rollin at 5”, Kevin MacLeod (incompetech.com), licenciada bajo <a href=\"https://creativecommons.org/licenses/by/4.0/\" target=\"_blank\" rel=\"noopener\">CC BY 4.0</a>. Fragmento editado para el reel.",
     "stats.1":"suscriptores en el canal que edité","stats.1s":"suscriptores en el canal","stats.2":"de vistas en el video más visto","stats.3":"vinhetas para Bradesco Seguros","stats.4":"en la mesa de montaje desde entonces","stats.4s":"editando desde entonces",
@@ -1154,5 +1165,22 @@ d.style.setProperty('--hp',(r.matches?1:Math.min(1,Math.max(0,scrollY/240))).toF
 d.style.setProperty('--lc',((.14+.40*S(x,2.5,.35))*k*hk).toFixed(3));
 if(A&&P&&!r.matches){var b=A.getBoundingClientRect(),p=(b.top+b.height/2-innerHeight/2)/(innerHeight/2+b.height/2);p=Math.max(-1,Math.min(1,p));d.style.setProperty('--py',(p*-14).toFixed(2)+'%')}}
 addEventListener('scroll',function(){if(!t){t=true;requestAnimationFrame(u)}},{passive:true});addEventListener('resize',u);addEventListener('load',u);u()})()</script><script>(function(){var h=document.querySelector('section.lka .sec-title'),v=document.querySelector('section.lka .videos'),n=document.querySelector('section.lka .sec-num');if(!h||!v)return;function a(){if(innerWidth<=820){v.style.marginLeft='';v.style.marginRight='';return}v.style.marginLeft='0px';v.style.marginRight='0px';var d=h.getBoundingClientRect().left-v.getBoundingClientRect().left;v.style.marginLeft=Math.max(0,d)+'px';v.style.marginRight=Math.max(0,d)+'px'}a();addEventListener('resize',a);addEventListener('load',a);if(window.ResizeObserver&&n)new ResizeObserver(a).observe(n);new MutationObserver(a).observe(document.documentElement,{attributes:true,attributeFilter:['lang']})})()</script>
+<script>/* wa-cta-visibility-v1: avoid duplicate WhatsApp CTAs in the viewport */
+(function(){
+  var floating=document.querySelector('.wa-float');
+  var targets=Array.prototype.slice.call(document.querySelectorAll('a[data-wa]')).filter(function(el){return el!==floating&&!floating.contains(el);});
+  if(!floating||!targets.length)return;
+  floating.classList.add('is-hidden');
+  floating.setAttribute('aria-hidden','true');
+  if(!('IntersectionObserver' in window)){floating.classList.remove('is-hidden');floating.setAttribute('aria-hidden','false');return;}
+  var visible=new Map();
+  var observer=new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){visible.set(entry.target,entry.isIntersecting);});
+    var hidden=Array.from(visible.values()).some(Boolean);
+    floating.classList.toggle('is-hidden',hidden);
+    floating.setAttribute('aria-hidden',hidden?'true':'false');
+  },{threshold:0});
+  targets.forEach(function(el){observer.observe(el);});
+})();</script>
 </body>
 </html>
