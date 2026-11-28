@@ -268,6 +268,7 @@ html[lang="es"] footer .wrap::before{content:"▸ FIN DEL ROLLO   ▸   5219   �
 <style>:root{--serif:"DM Serif Display",Georgia,serif;--sans:"Instrument Sans",system-ui,sans-serif}
 .hero h1,.sec-title,.about h2,.contact h2{font-family:"DM Serif Display",serif!important;font-weight:400!important;letter-spacing:-.01em!important}
 .hero h1 em,.contact h2 em{font-family:"DM Serif Display",serif!important;font-style:italic;font-weight:400!important}</style>
+<style>.reel{padding:clamp(3.5rem,8vw,6rem) 0 clamp(2.5rem,6vw,4.5rem);background:var(--bg)}.reel-head{margin-bottom:1.8rem}.reel-fig{margin:0;max-width:960px}.reel-fig video{display:block;width:100%;aspect-ratio:16/9;background:#000;border-radius:10px;border:1px solid var(--line)}.reel-fig figcaption{margin-top:.8rem;justify-content:flex-start}.reel-fig figcaption .m{white-space:normal}</style>
 </head>
 <body>
 <div class="grain" aria-hidden="true"></div>
@@ -321,6 +322,18 @@ html[lang="es"] footer .wrap::before{content:"▸ FIN DEL ROLLO   ▸   5219   �
       <div class="stat reveal"><b>2,2 mi+</b><span class="f" data-i18n="stats.1">inscritos no canal que editei</span><span class="s" data-i18n="stats.1s">inscritos no canal</span></div>
       <div class="stat reveal"><b>1,49 mi</b><span data-i18n="stats.2">de views no vídeo mais assistido</span></div>
       <div class="stat reveal"><b>2011</b><span class="f" data-i18n="stats.4">na mesa de montagem desde então</span><span class="s" data-i18n="stats.4s">editando desde então</span></div>
+    </div>
+  </section>
+  <section class="reel" id="showreel" aria-label="Showreel">
+    <div class="wrap">
+      <div class="reel-head reveal">
+        <span class="sec-num" data-i18n="reel.k">Showreel</span>
+        <h2 class="sec-title" data-i18n="reel.t">Cinquenta segundos, vários trabalhos, um corte só.</h2>
+      </div>
+      <figure class="reel-fig reveal">
+        <video id="reelv" controls playsinline preload="none" poster="3-reel-poster.jpg" src="4-showreel.mp4"></video>
+        <figcaption><span class="m" data-i18n="reel.c">Música: Hot Swing, Kevin MacLeod (incompetech.com), CC BY 4.0</span></figcaption>
+      </figure>
     </div>
   </section>
   <div id="trabalhos"></div>
@@ -634,7 +647,7 @@ const I18N = {
     "hero.kicker":"Editor de Vídeo & Motion Designer <span class='kb'>Paraty, Brasil</span>",
     "hero.title":"Seu público compra de quem ele sente.<br><em>Eu edito essa sensação.</em>",
     "hero.sub":"Edição e motion design para canais, marcas e artistas. Da minha mesa de montagem saíram vídeos com <strong>mais de um milhão de views</strong>, vinhetas para o <strong>Bradesco Seguros</strong> e videoclipes autorais.",
-    "hero.cta":"Chamar no WhatsApp","hero.cta2":"Ver trabalhos","hero.scroll":"Role",
+    "hero.cta":"Chamar no WhatsApp","hero.cta2":"Ver trabalhos","hero.scroll":"Role","reel.k":"Showreel","reel.t":"Cinquenta segundos, vários trabalhos, um corte só.","reel.c":"Música: Hot Swing, Kevin MacLeod (incompetech.com), CC BY 4.0",
     "stats.1":"inscritos no canal que editei","stats.1s":"inscritos no canal","stats.2":"de views no vídeo mais assistido","stats.3":"vinhetas para Bradesco Seguros","stats.4":"na mesa de montagem desde então","stats.4s":"editando desde então",
     "s1.desc":"Captação e edição para o maior canal de ecommerce do Brasil, hoje com <strong>2,2 milhões de inscritos</strong>. Os vídeos mais vistos que editei passam de <strong>1,2 milhão de views</strong> cada (total de cada vídeo).",
     "views":"views no YouTube","views.t":"total do vídeo, não só do meu período","s1.num":"CENA 01","s2.num":"CENA 02","s3.num":"CENA 03","s4.num":"CENA 04","s5.num":"CENA 05","s6.num":"CENA 06",
@@ -662,7 +675,7 @@ const I18N = {
     "hero.kicker":"Video Editor & Motion Designer <span class='kb'>Paraty, Brazil</span>",
     "hero.title":"Your audience buys from who they feel.<br><em>I edit that feeling.</em>",
     "hero.sub":"Editing and motion design for channels, brands and artists. My edit room has shipped videos with <strong>over a million views</strong>, network idents for <strong>Bradesco Seguros</strong> and independent music videos.",
-    "hero.cta":"Message on WhatsApp","hero.cta2":"See the work","hero.scroll":"Scroll",
+    "hero.cta":"Message on WhatsApp","hero.cta2":"See the work","hero.scroll":"Scroll","reel.k":"Showreel","reel.t":"Fifty seconds, a lot of work, one cut.","reel.c":"Music: Hot Swing, Kevin MacLeod (incompetech.com), CC BY 4.0",
     "stats.1":"subscribers on the channel I edited","stats.1s":"subscribers on the channel","stats.2":"views on the most-watched video","stats.3":"idents for Bradesco Seguros","stats.4":"in the edit room ever since","stats.4s":"editing ever since",
     "s1.desc":"Filming and editing for Brazil's biggest ecommerce channel, now with <strong>2.2 million subscribers</strong>. The most-watched videos I edited each passed <strong>1.2 million views</strong> (each video's total).",
     "views":"views on YouTube","views.t":"total views of the video, not only during my time",
@@ -690,7 +703,7 @@ const I18N = {
     "hero.kicker":"Editor de Video & Motion Designer <span class='kb'>Paraty, Brasil</span>",
     "hero.title":"Tu público compra de quien siente.<br><em>Yo edito esa sensación.</em>",
     "hero.sub":"Edición y motion design para canales, marcas y artistas. De mi mesa de montaje salieron videos con <strong>más de un millón de vistas</strong>, vinhetas para <strong>Bradesco Seguros</strong> y videoclips autorales.",
-    "hero.cta":"Escribir por WhatsApp","hero.cta2":"Ver trabajos","hero.scroll":"Desliza",
+    "hero.cta":"Escribir por WhatsApp","hero.cta2":"Ver trabajos","hero.scroll":"Desliza","reel.k":"Showreel","reel.t":"Cincuenta segundos, varios trabajos, un solo corte.","reel.c":"Música: Hot Swing, Kevin MacLeod (incompetech.com), CC BY 4.0",
     "stats.1":"suscriptores en el canal que edité","stats.1s":"suscriptores en el canal","stats.2":"de vistas en el video más visto","stats.3":"vinhetas para Bradesco Seguros","stats.4":"en la mesa de montaje desde entonces","stats.4s":"editando desde entonces",
     "s1.desc":"Captación y edición para el mayor canal de ecommerce de Brasil, hoy con <strong>2,2 millones de suscriptores</strong>. Los videos más vistos que edité superan <strong>1,2 millones de vistas</strong> cada uno (total de cada video).",
     "views":"vistas en YouTube","views.t":"total del video, no solo de mi período",
