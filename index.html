@@ -1165,9 +1165,8 @@ addEventListener('scroll',function(){if(!t){t=true;requestAnimationFrame(u)}},{p
 <script>/* wa-cta-visibility-v1: avoid duplicate WhatsApp CTAs in the viewport */
 (function(){
   var floating=document.querySelector('.wa-float');
-  var hero=document.querySelector('.hero a[data-wa="hero"]');
-  var contact=document.querySelector('.contact a[data-wa]');
-  if(!floating||!hero||!contact)return;
+  var targets=Array.prototype.slice.call(document.querySelectorAll('a[data-wa]')).filter(function(el){return el!==floating&&!floating.contains(el);});
+  if(!floating||!targets.length)return;
   floating.classList.add('is-hidden');
   floating.setAttribute('aria-hidden','true');
   if(!('IntersectionObserver' in window)){floating.classList.remove('is-hidden');floating.setAttribute('aria-hidden','false');return;}
@@ -1178,8 +1177,7 @@ addEventListener('scroll',function(){if(!t){t=true;requestAnimationFrame(u)}},{p
     floating.classList.toggle('is-hidden',hidden);
     floating.setAttribute('aria-hidden',hidden?'true':'false');
   },{threshold:0});
-  observer.observe(hero);
-  observer.observe(contact);
+  targets.forEach(function(el){observer.observe(el);});
 })();</script>
 </body>
           </html>
